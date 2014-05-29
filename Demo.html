@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Jasmine Spec Runner v2.0.0</title>
+
+  <link rel="shortcut icon" type="image/png" href="lib/jasmine-2.0.0/jasmine_favicon.png">
+  <link rel="stylesheet" type="text/css" href="lib/jasmine-2.0.0/jasmine.css">
+  
+  <script type="text/javascript" src="lib/jquery-1.11.1.min.js"></script>
+
+  <!-- include source files here... -->
+  <script type="text/javascript" src="src/jquery.jCreate.js"></script>
+</head>
+
+<body>
+  <input id="button" type="button" value="Create">
+  <div   id="container"></div>
+
+  <script type="text/javascript">
+    
+    var colours = ['white', 'green', 'blue', 'red', 'black'];
+    function gCol() {
+      var
+        n = colours.length - 1,
+        random = Math.round(Math.random() * n)
+      ;
+
+      return colours[random];
+    }
+
+    $('#container').on('create', '> div:not(.no)', function() {
+      $(this).css('backgroundColor', gCol());
+    });
+  
+    $(document).on('create', '#container > div div', function() {
+
+      $(this).css('border', '1px solid ' + gCol());
+    });
+
+    $(document).on('create', 'div', function() {
+
+      $(this).css('border', '1px solid ' + gCol());
+    });
+    
+    $(document).on('create', '.asd', function() {
+      $(this).css('backgroundColor', gCol());
+    });
+    
+
+    $('#button').click(function() {
+      $('#container').append($('<div>').text('created!'));
+      $('#container').append($('<div>').addClass('no').text('created!'));
+      $('#container').append($('<div>').text('created!'));
+      $('#container').append($('<div>').html('<div>created!</div>'));
+      $('body').append($('<div>').html('<p>created!</p>'));
+      $('#container').html('<div>created!!!</div>');
+    }).click();
+  </script>
+</body>
+</html>
