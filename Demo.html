@@ -19,43 +19,23 @@
 
   <script type="text/javascript">
     
-    var colours = ['white', 'green', 'blue', 'red', 'black'];
-    function gCol() {
+    var generateColor = function()
+    {
       var
-        n = colours.length - 1,
-        random = Math.round(Math.random() * n)
+        R = Math.round(Math.random() * 255).toString(16),
+        G = Math.round(Math.random() * 255).toString(16),
+        B = Math.round(Math.random() * 255).toString(16)
       ;
-
-      return colours[random];
+      return '#'+R+G+B;
     }
 
-    $('#container').on('create', '> div:not(.no)', function() {
-      $(this).css('backgroundColor', gCol());
-    });
-  
-    $(document).on('create', '#container > div div', function() {
-
-      $(this).css('border', '1px solid ' + gCol());
-    });
-
-    $(document).on('create', 'div', function() {
-
-      $(this).css('border', '1px solid ' + gCol());
-    });
-    
-    $(document).on('create', '.asd', function() {
-      $(this).css('backgroundColor', gCol());
-    });
-    
+    $('#container').on('create', 'div', function() {
+      $(this).css('backgroundColor', generateColor());
+    });    
 
     $('#button').click(function() {
-      $('#container').append($('<div>').text('created!'));
-      $('#container').append($('<div>').addClass('no').text('created!'));
-      $('#container').append($('<div>').text('created!'));
-      $('#container').append($('<div>').html('<div>created!</div>'));
-      $('body').append($('<div>').html('<p>created!</p>'));
-      $('#container').html('<div>created!!!</div>');
-    }).click();
+      $('#container').append( $('<div>').text('created!') );
+    });
   </script>
 </body>
 </html>

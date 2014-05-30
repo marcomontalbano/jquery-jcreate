@@ -70,6 +70,8 @@
                 $element  : $(this),
                 handleObj : handleObj
             });
+
+            create(null, null);
         },
 
         /**
@@ -165,10 +167,7 @@
     {
         if (container.length >= 1)
         {
-            var
-                $value   = $(value),
-                current  = null
-            ;
+            var current  = null;
             
             for (var key in container)
             {
