@@ -2,40 +2,47 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>Jasmine Spec Runner v2.0.0</title>
-
-  <link rel="shortcut icon" type="image/png" href="lib/jasmine-2.0.0/jasmine_favicon.png">
-  <link rel="stylesheet" type="text/css" href="lib/jasmine-2.0.0/jasmine.css">
-  
-  <script type="text/javascript" src="lib/jquery-1.11.1.min.js"></script>
-
-  <!-- include source files here... -->
-  <script type="text/javascript" src="src/jquery.jCreate.js"></script>
+  <title>jCreate DEMO</title>
 </head>
 
 <body>
-  <input id="button" type="button" value="Create">
-  <div   id="container"></div>
+  
 
-  <script type="text/javascript">
-    
-    var generateColor = function()
-    {
-      var
-        R = Math.round(Math.random() * 255).toString(16),
-        G = Math.round(Math.random() * 255).toString(16),
-        B = Math.round(Math.random() * 255).toString(16)
-      ;
-      return '#'+R+G+B;
-    }
-
-    $('#container').on('create', 'div', function() {
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="src/jquery.jcreate.js"></script>
+<script type="text/javascript">
+  var generateColor = function()
+  {
+    var
+      R = ("0" + Math.round(Math.random() * 255).toString(16)).slice(-2),
+      G = ("0" + Math.round(Math.random() * 255).toString(16)).slice(-2),
+      B = ("0" + Math.round(Math.random() * 255).toString(16)).slice(-2)
+    ;
+    return '#'+R+G+B;
+  }
+  $(function()
+  {
+    $('#element-container').on('create', '> div', function() {
+      console.log('jCreate!');
       $(this).css('backgroundColor', generateColor());
+      $(this).css('padding', '5px');
+      $(this).css('display', 'inline-block');
     });    
 
-    $('#button').click(function() {
-      $('#container').append( $('<div>').text('created!') );
+    $('#element-container').empty();
+    $('#button-create').click(function() {
+      $('#element-container').append( $('<div>').text('this is a new element :)') );
     });
-  </script>
+  });
+</script>
+
+  <h3>Test it</h3>
+
+  <p><input class="form-control" id="button-create" name="Create" type="button" value="Create" /></p>
+
+  <div id="element-container">&nbsp;</div>
+
+  <p>&nbsp;</p>
+
 </body>
 </html>
