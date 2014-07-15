@@ -8,7 +8,7 @@ Now you can do something cool when one or more elements are created and are avai
 Setup
 -----
 
-To install jCreate in your application, just copy and paste following tag after jQuery inclusion.
+To install jCreate in your application, just copy and paste the following tag after the jQuery `<script>` tag.
 
 ```sh
 
