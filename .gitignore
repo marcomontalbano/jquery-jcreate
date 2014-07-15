@@ -1,1 +1,12 @@
+# default
 .DS_Store
+
+# jasmine
+SpecRunner.html
+
+# node.js
+.grunt/
+/node_modules
+/output
+
+# others

@@ -1,29 +1,36 @@
-# README #
+jCreate
+=======
 
-This README would normally document whatever steps are necessary to get your application up and running.
+jCreate is a plug-in for jQuery that adds a new bindable event.
 
-### What is this repository for? ###
+Now you can do something cool when one or more elements are created and are available on the page.
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+Setup
+-----
 
-### How do I get set up? ###
+To install jCreate in your application, just copy and paste following tag after jQuery inclusion.
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+```sh
 
-### Contribution guidelines ###
+<script type="text/javascript" src="<JAVASCRIPTS_FOLDER>/jquery.jcreate.js"></script>
+```
 
-* Writing tests
-* Code review
-* Other guidelines
+Test
+----
 
-### Who do I talk to? ###
+In order to get started, you'll want to install Grunt's command line interface (CLI) globally.
 
-* Repo owner or admin
-* Other community or team contact
+You may need to use sudo (for OSX, *nix, BSD etc) or run your command shell as Administrator (for Windows) to do this.
+
+```sh
+
+npm install -g grunt-cli
+npm install grunt-contrib-jasmine
+```
+
+To run tests use
+
+```sh
+
+grunt test
+```

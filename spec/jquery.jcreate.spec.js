@@ -24,7 +24,7 @@ describe("jCreate", function() {
 
   it("shouldn't execute the callback if 'off' function is executed.", function()
   {
-    var style = {'display' : 'block', 'margin' : '10px'};
+    var style = {'display' : 'block', 'margin-top' : '10px'};
     $container.on('create', '> div', function() {
       $(this).css(style);
     });
@@ -43,9 +43,9 @@ describe("jCreate", function() {
     ;
     $container.on('create', '> div', function()
     {
-      currentStyle = {'display' : 'block', 'margin' : random() + 'px'};
+      currentStyle = {'display' : 'block', 'margin-top' : random() + 'px'};
       if (firstStyle === null) {
-        firstStyle = {'display' : 'block', 'margin' : random() + 'px'};
+        firstStyle = {'display' : 'block', 'margin-top' : random() + 'px'};
         currentStyle = firstStyle;
       }
       $(this).css(currentStyle);
@@ -60,7 +60,7 @@ describe("jCreate", function() {
   {
     var
       counter = 0,
-      style   = {'display' : 'block', 'margin' : random() + 'px'}
+      style   = {'display' : 'block', 'margin-top' : random() + 'px'}
     ;
 
     $container.append( $('<div>') );
@@ -79,7 +79,7 @@ describe("jCreate", function() {
 
     it("you create a new element after binding 'jCreate'.", function()
     {
-      var style = {'display' : 'block', 'margin' : '10px'};
+      var style = {'display' : 'block', 'margin-top' : '10px'};
       $container.on('create', '> div', function() {
         $(this).css(style);
       });
@@ -90,7 +90,7 @@ describe("jCreate", function() {
 
     it("you create a new element before binding 'jCreate'.", function()
     {
-      var style = {'display' : 'block', 'margin' : '10px'};
+      var style = {'display' : 'block', 'margin-top' : '10px'};
       $container.append( $('<div>') );
       $container.on('create', '> div', function() {
         $(this).css(style);
