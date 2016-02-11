@@ -1,0 +1,7 @@
+test:
+    - 'jshint'
+    - 'jasmine'
+
+build:
+    - 'test'
+    - 'uglify'

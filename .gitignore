@@ -8,5 +8,6 @@ SpecRunner.html
 .grunt/
 /node_modules
 /output
+/bower_components
 
 # others

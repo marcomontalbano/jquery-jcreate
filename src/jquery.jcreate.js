@@ -1,3 +1,5 @@
+;;
+
 /**
  * jCreate | jQuery Special Event
  *
@@ -14,8 +16,8 @@
 (function($, domManip, html)
 {
     var
-        container = [],
-        random    = Math.random()
+          container = []
+        , random    = Math.random()
     ;
 
     $.event.special.create =
@@ -147,15 +149,15 @@
 
         }
     };
-    
-    
+
+
     // DOM manipulation methods
     $.fn.domManip = function( args, table, callback )
     {
         var _domManip = domManip.apply( this, arguments );
         return create(args[0], _domManip);
     };
-    
+
     // HTML method
     $.fn.html = function( value )
     {

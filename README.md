@@ -12,7 +12,7 @@ To install jCreate in your application, just copy and paste the following tag af
 
 ```sh
 
-<script type="text/javascript" src="<JAVASCRIPTS_FOLDER>/jquery.jcreate.js"></script>
+<script type="text/javascript" src="<JAVASCRIPTS_FOLDER>/jquery.jcreate.min.js"></script>
 ```
 
 Test
@@ -25,7 +25,7 @@ You may need to use sudo (for OSX, *nix, BSD etc) or run your command shell as A
 ```sh
 
 npm install -g grunt-cli
-npm install grunt-contrib-jasmine
+npm install
 ```
 
 To run tests use
