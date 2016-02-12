@@ -1,7 +1,9 @@
 describe("jCreate", function() {
 
     var   $container
-        , style = {'display' : 'block', 'margin-top' : '10px'}
+        , style_red   = {'display' : 'block', 'margin-top' : '10px', 'color' : 'rgb(255, 0, 0)'}
+        , style_green = {'display' : 'block', 'margin-top' : '10px', 'color' : 'rgb(0, 255, 0)'}
+        , style_blue  = {'display' : 'block', 'margin-top' : '10px', 'color' : 'rgb(0, 0, 255)'}
     ;
 
     beforeEach(function ()
@@ -11,7 +13,7 @@ describe("jCreate", function() {
 
         // add 'create' event to container.
         $container.on('create', '> div', function() {
-            $(this).css( style );
+            $(this).css( style_red );
         });
     });
 
@@ -24,7 +26,7 @@ describe("jCreate", function() {
         expect( $.event.special.create ).toEqual( jasmine.any(Object) );
     });
 
-    it("shouldn't execute the callback if 'off' function is executed.", function()
+    it("shouldn't execute the callback if 'off' function is invoked.", function()
     {
         // when
         $container.off('create');
@@ -32,7 +34,27 @@ describe("jCreate", function() {
         $container.append( $('<div>') );
 
         // then
-        expect( $container.find('> div') ).not.toHaveCss(style);
+        expect( $container.find('> div') ).not.toHaveCss(style_red);
+    });
+
+    it("should execute the callback just one time for each created element.", function()
+    {
+        // given
+        var $element = $('<div>');
+
+        // when
+        $container.append( $element );
+
+        // then
+        expect( $element ).toHaveCss( style_red );
+
+        // when
+        $element.css({ 'color' : 'rgb(0,0,255)' });
+        $container.append( $('<div>') );
+
+        // then
+        expect( $container.find('> div:eq(0)') ).toHaveCss( style_blue );
+        expect( $container.find('> div:eq(1)') ).toHaveCss( style_red  );
     });
 
     describe("should execute the callback when", function()
@@ -65,7 +87,7 @@ describe("jCreate", function() {
             // then
             expect( _inner_counter ).toBe(2);
             expect( counter ).toBe(2);
-            expect( $container.find('> div') ).toHaveCss( style );
+            expect( $container.find('> div') ).toHaveCss( style_red );
         });
 
 
@@ -78,7 +100,7 @@ describe("jCreate", function() {
 
             // then
             expect( counter ).toBe(2);
-            expect( $container.find('> div') ).toHaveCss( style );
+            expect( $container.find('> div') ).toHaveCss( style_red );
         });
 
         it("the 'prepend' method is invoked.", function()
@@ -90,7 +112,7 @@ describe("jCreate", function() {
 
             // then
             expect( counter ).toBe(2);
-            expect( $container.find('> div') ).toHaveCss( style );
+            expect( $container.find('> div') ).toHaveCss( style_red );
         });
 
         it("the 'before' method is invoked.", function()
@@ -104,7 +126,7 @@ describe("jCreate", function() {
 
             // then
             expect( counter ).toBe(2);
-            expect( $container.find('> div') ).toHaveCss( style );
+            expect( $container.find('> div') ).toHaveCss( style_red );
         });
 
         it("the 'after' method is invoked.", function()
@@ -118,7 +140,19 @@ describe("jCreate", function() {
 
             // then
             expect( counter ).toBe(2);
-            expect( $container.find('> div') ).toHaveCss( style );
+            expect( $container.find('> div') ).toHaveCss( style_red );
+        });
+
+        it("the 'html' method is invoked.", function()
+        {
+            // when
+            $container.html( '<div></div>' + '<div><div></div></div>' + '<div></div>' + '<span></span>' );
+
+            // then
+            expect(counter).toBe(3);
+            $container.find('> div').each(function() {
+                expect( $(this) ).toHaveCss( style_red );
+            });
         });
 
         it("the 'replaceWith' method is invoked.", function()
@@ -132,19 +166,7 @@ describe("jCreate", function() {
 
             // then
             expect( counter ).toBe(1);
-            expect( $container.find('> div') ).toHaveCss( style );
-        });
-
-        it("the 'html' method is invoked.", function()
-        {
-            // when
-            $container.html( '<div></div>' + '<div><div></div></div>' + '<div></div>' + '<span></span>' );
-
-            // then
-            expect(counter).toBe(3);
-            $container.find('> div').each(function() {
-                expect( $(this) ).toHaveCss( style );
-            });
+            expect( $container.find('> div') ).toHaveCss( style_red );
         });
     });
 

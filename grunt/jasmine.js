@@ -6,10 +6,10 @@ var _jqueries = {
     "jquery-1.9"  : "bower_components/jquery-1.9/jquery.js",
     "jquery-1.10" : "bower_components/jquery-1.10/jquery.js",
     "jquery-1.11" : "bower_components/jquery-1.11/dist/jquery.js",
-    //"jquery-1.12" : "bower_components/jquery-1.12/dist/jquery.js",
+    "jquery-1.12" : "bower_components/jquery-1.12/dist/jquery.js",
     "jquery-2.0"  : "bower_components/jquery-2.0/jquery.js",
     "jquery-2.1"  : "bower_components/jquery-2.1/dist/jquery.js",
-    //"jquery-2.2"  : "bower_components/jquery-2.2/dist/jquery.js"
+    "jquery-2.2"  : "bower_components/jquery-2.2/dist/jquery.js"
 };
 
 // 

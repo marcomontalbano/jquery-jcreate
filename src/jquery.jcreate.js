@@ -13,12 +13,9 @@
  *
  */
 
-(function($, domManip, html)
+(function($, domManip, append, prepend, before, after, html, replaceWith)
 {
-    var
-          container = []
-        , random    = Math.random()
-    ;
+    var container = [];
 
     $.event.special.create =
     {
@@ -73,7 +70,7 @@
                 handleObj : handleObj
             });
 
-            create(null, null);
+            create();
         },
 
         /**
@@ -88,7 +85,7 @@
             var len = container.length;
             while( len-- )
             {
-                if( $(this).is(container[len].$element) && container[len].handleObj.selector === handleObj.selector )
+                if( $(this).is( container[len].$element ) && container[len].handleObj.selector === handleObj.selector )
                 {
                     container.splice(len, 1);
                     break;
@@ -152,20 +149,57 @@
 
 
     // DOM manipulation methods
-    $.fn.domManip = function( args, table, callback )
+    $.fn.domManip = function()
     {
-        var _domManip = domManip.apply( this, arguments );
-        return create(args[0], _domManip);
+        var _ = domManip.apply( this, arguments );
+        return create( _ );
     };
 
-    // HTML method
-    $.fn.html = function( value )
+    // "append" DOM manipulation.
+    $.fn.append = function()
     {
-        var _html = html.apply( this, arguments );
-        return create(value, _html);
+        var _ = append.apply( this, arguments );
+        return create( _ );
     };
 
-    var create = function(value, _)
+    // "prepend" DOM manipulation.
+    $.fn.prepend = function()
+    {
+        var _ = prepend.apply( this, arguments );
+        return create( _ );
+    };
+
+    // "before" DOM manipulation.
+    $.fn.before = function()
+    {
+        var _ = before.apply( this, arguments );
+        return create( _ );
+    };
+
+    // "after" DOM manipulation.
+    $.fn.after = function()
+    {
+        var _ = after.apply( this, arguments );
+        return create( _ );
+    };
+
+    // "html" DOM manipulation.
+    $.fn.html = function()
+    {
+        var _ = html.apply( this, arguments );
+        return create( _ );
+    };
+
+    // "replaceWith" DOM manipulation.
+    $.fn.replaceWith = function()
+    {
+        var _ = replaceWith.apply( this, arguments );
+        return create( _ );
+    };
+
+
+    // 
+    var create = function( _ )
     {
         if (container.length >= 1)
         {
@@ -174,16 +208,15 @@
             for (var key in container)
             {
                 current = container[key];
-                current.$element.find(current.handleObj.selector).each(function()
+                current.$element.find( current.handleObj.selector ).each(function()
                 {
-                    var
-                        $this = $(this),
-                        data_key = '$.event.special.create',
-                        data_sep = ',',
-                        data  = $this.data(data_key) ? $this.data(data_key).split(data_sep) : []
+                    var   $this    = $(this)
+                        , data_key = '$.event.special.create'
+                        , data_sep = ','
+                        , data     = $this.data(data_key) ? $this.data(data_key).split(data_sep) : []
                     ;
 
-                    if ($.inArray(key, data) === -1)
+                    if ( $.inArray(key, data) === -1 )
                     {
                         data.push(key);
                         $this.data(data_key, data.join(data_sep));
@@ -195,5 +228,14 @@
 
         return _;
     };
-    
-})(jQuery, jQuery.fn.domManip, jQuery.fn.html);
+
+})(
+    jQuery,
+    jQuery.fn.domManip,
+    jQuery.fn.append,
+    jQuery.fn.prepend,
+    jQuery.fn.before,
+    jQuery.fn.after,
+    jQuery.fn.html,
+    jQuery.fn.replaceWith
+);
