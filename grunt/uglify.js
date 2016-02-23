@@ -1,11 +1,11 @@
 module.exports = {
-    minified: {
+    all: {
         options: {
             banner: ''
                   + '/**\n'
-                  + ' * <%= package.filename %>.js - v<%= package.version %> (last dist: <%= grunt.template.today("yyyy-mm-dd") %>)\n'
-                  + ' * <%= package.author.name %> <<%= package.author.email %>>\n'
-                  + ' * -------------------------------------------------\n'
+                  + ' * <%= package.filename %>.js v<%= package.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n'
+                  + ' * <%= package.author.name %> - <%= package.author.url %>\n'
+                  + ' * -----------------------------------------------\n'
                   + ' */\n'
           },
         files: {

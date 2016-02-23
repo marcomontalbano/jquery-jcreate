@@ -1,7 +1,7 @@
 test:
-    - 'jshint'
+    - 'jshint:source'
     - 'jasmine'
 
 build:
     - 'test'
-    - 'uglify'
+    - 'uglify:all'

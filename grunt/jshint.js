@@ -5,5 +5,9 @@ module.exports = {
 
         '-W032': true,  // https://jslinterrors.com/unnecessary-semicolon
     },
-    src: [ '<%= files.spec %>', '<%= files.src %>' ],
+    source : {
+        files : {
+            src: [ '<%= files.spec %>', '<%= files.src %>' ],
+        },
+    },
 };

@@ -26,6 +26,8 @@ You may need to use sudo (for OSX, *nix, BSD etc) or run your command shell as A
 
 npm install -g grunt-cli
 npm install
+
+bower install
 ```
 
 To run tests use
