@@ -1,3 +1,5 @@
+[![Build Status](https://drone.io/github.com/mmontalbano/jquery-jcreate/status.png)](https://drone.io/github.com/mmontalbano/jquery-jcreate/latest)
+
 jCreate
 =======
 
@@ -42,15 +44,18 @@ $( '#dataTable tbody' ).append('<tr><td>this is a new row!</td></tr>');
 Development
 -----------
 
-### Install Grunt
+### Install Grunt and Bower
 
-To install Grunt, you must first download and install [node.js] (which includes npm).
+To install Grunt and Bower, you must first download and install [node.js] (which includes npm).
 
 Then, using the command line:
 
 ```sh
 # install `grunt-cli` globally
 npm install -g grunt-cli
+
+# install `bower` globally
+npm install -g bower
 
 # navigate to the root of your project, then run
 npm install
