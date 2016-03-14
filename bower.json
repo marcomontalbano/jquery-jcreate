@@ -1,7 +1,6 @@
 {
-    "name": "jCreate",
+    "name": "jquery-jcreate",
     "description": "jCreate is a plugin for jQuery that adds a new bindable event. Now you can do something cool when one or more elements are created and are available on the page.",
-    "main": "",
     "author" : {
         "name"  : "Marco Montalbano",
         "email" : "marcomontalbano.work@gmail.com",
@@ -25,6 +24,9 @@
         "output",
         "spec",
         "src"
+    ],
+    "main": [
+        "dist/jquery.jcreate.min.js"
     ],
     "dependencies": {
         "jquery" : ">=1.8"
