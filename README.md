@@ -1,38 +1,78 @@
 jCreate
 =======
 
-jCreate is a plug-in for jQuery that adds a new bindable event.
+jCreate is a plugin for jQuery that adds a new bindable event.
 
 Now you can do something cool when one or more elements are created and are available on the page.
 
-Setup
------
+See it in action with [JSFiddle].
 
-To install jCreate in your application, just copy and paste the following tag after the jQuery `<script>` tag.
+
+Install with Bower
+------------------
+
+You can install jCreate using [Bower]:
 
 ```sh
-
-<script type="text/javascript" src="<JAVASCRIPTS_FOLDER>/jquery.jcreate.min.js"></script>
+bower install jcreate
 ```
 
-Test
-----
-
-In order to get started, you'll want to install Grunt's command line interface (CLI) globally.
-
-You may need to use sudo (for OSX, *nix, BSD etc) or run your command shell as Administrator (for Windows) to do this.
+And now you can include it in you project with a `<script>` tag.
 
 ```sh
 
-npm install -g grunt-cli
-npm install
+<script type="text/javascript" src="jquery.jcreate.min.js"></script>
+```
 
+How to use
+----------
+
+jCreate works with the [jQuery Event Delegation].
+
+```js
+// bind 'create' event.
+$( '#dataTable tbody' ).on( 'create', 'tr', function() {
+    console.log( $( this ).text() );
+});
+
+// add a new 'row'.
+$( '#dataTable tbody' ).append('<tr><td>this is a new row!</td></tr>');
+```
+
+Development
+-----------
+
+### Install Grunt
+
+To install Grunt, you must first download and install [node.js] (which includes npm).
+
+Then, using the command line:
+
+```sh
+# install `grunt-cli` globally
+npm install -g grunt-cli
+
+# navigate to the root of your project, then run
+npm install
 bower install
 ```
 
-To run tests use
 
-```sh
+### Available Grunt tasks
 
-grunt test
-```
+* `jshint`  Validate files with [JSHint].
+* `jasmine` Run [jasmine] specs headlessly through PhantomJS.
+* `uglify`  Minify files with [UglifyJS].
+* `watch`   Run predefined tasks whenever watched files change.
+* `test`    Alias for "jshint", "jasmine" tasks.
+* `build`   Alias for "test", "uglify" tasks.
+
+[Bower]: <http://bower.io/>
+[jQuery Event Delegation]: <http://api.jquery.com/on/#direct-and-delegated-events>
+[node.js]: <https://nodejs.org/>
+[JSFiddle]: <http://jsfiddle.net/mmontalbano/97cnLqgm/>
+[download and install node.js]: <https://nodejs.org/>
+
+[JSHint]:   <https://www.npmjs.com/package/grunt-contrib-jshint>
+[jasmine]:  <https://www.npmjs.com/package/grunt-contrib-jasmine>
+[UglifyJS]: <https://www.npmjs.com/package/grunt-contrib-uglify>

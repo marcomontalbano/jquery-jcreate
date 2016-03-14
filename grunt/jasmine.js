@@ -62,7 +62,7 @@ for ( var _jquery_version in _jqueries )
                 // Third party libraries like jQuery & generally anything loaded before source, specs, and helpers.
                 vendor: [
                     _jquery_path,
-                    'lib/jasmine-jquery.js',
+                    'node_modules/jasmine-jquery/lib/jasmine-jquery.js',
                     'lib/jasmine-jquery-config.js',
                 ],
             },

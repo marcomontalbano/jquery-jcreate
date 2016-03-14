@@ -19,11 +19,23 @@ describe("jCreate", function() {
 
     afterEach(function () {
         $container.remove();
-        $container.off('create');
+        $container  .off('create');
+        $(document) .off('create');
     });
 
     it("should provide the 'create' special event.", function() {
         expect( $.event.special.create ).toEqual( jasmine.any(Object) );
+    });
+
+    it("should work binding the event on $('document').", function()
+    {
+        // when
+        $(document).on('create', '#container', function() {
+            $(this).css( style_red );
+        });
+
+        // then
+        expect( $container ).toHaveCss(style_red);
     });
 
     it("shouldn't execute the callback if 'off' function is invoked.", function()

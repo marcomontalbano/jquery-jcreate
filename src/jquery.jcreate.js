@@ -3,8 +3,8 @@
 /**
  * jCreate | jQuery Special Event
  *
- * author: Marco Montalbano (www.marcomontalbano.com)
- * first release: version 1.0 - 18/11/2011
+ * author: Marco Montalbano
+ * first private release: 18/11/2011
  *
  * useful links
  * ------------
@@ -74,7 +74,7 @@
         },
 
         /**
-         * move: function( handleObj )
+         * remove: function( handleObj )
          *  When an event handler is removed from an element using an API such as .off(), this hook is called.
          *  The this keyword will be the element where the handler is being removed,
          *  and the handleObj argument is as described in the section above.
@@ -82,12 +82,11 @@
          */
         remove: function( handleObj )
         {
-            var len = container.length;
-            while( len-- )
+            for (var key in container)
             {
-                if( $(this).is( container[len].$element ) && container[len].handleObj.selector === handleObj.selector )
+                if( $(this).is( container[key].$element ) && container[key].handleObj.selector === handleObj.selector )
                 {
-                    container.splice(len, 1);
+                    delete container[key];
                     break;
                 }
             }
@@ -204,7 +203,7 @@
         if (container.length >= 1)
         {
             var current  = null;
-            
+
             for (var key in container)
             {
                 current = container[key];
