@@ -20,6 +20,9 @@
         "jcreate",
         "plugin"
     ],
+    "scripts": {
+        "test": "grunt test"
+    },
     "devDependencies" : {
         "grunt"                 : "^0.4.5",
         "load-grunt-config"     : "^0.19.1",
