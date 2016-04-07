@@ -1,4 +1,4 @@
-[![Build Status](https://drone.io/github.com/mmontalbano/jquery-jcreate/status.png)](https://drone.io/github.com/mmontalbano/jquery-jcreate/latest)
+[![Build Status](https://travis-ci.org/mmontalbano/jquery-jcreate.svg?branch=master)](https://travis-ci.org/mmontalbano/jquery-jcreate)
 
 jCreate
 =======
