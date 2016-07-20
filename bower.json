@@ -22,8 +22,7 @@
         "lib",
         "node_modules",
         "output",
-        "spec",
-        "src"
+        "spec"
     ],
     "main": [
         "dist/jquery.jcreate.min.js"
