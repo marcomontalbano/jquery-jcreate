@@ -2,7 +2,7 @@
     "name" : "jquery-jcreate",
     "filename" : "jquery.jcreate",
     "firstRelease" : "2011-11-18",
-    "version" : "1.0.0",
+    "version" : "1.0.1",
     "description" : "jCreate is a plugin for jQuery that adds a new bindable event. Now you can do something cool when one or more elements are created and are available on the page.",
     "author" : {
         "name"  : "Marco Montalbano",

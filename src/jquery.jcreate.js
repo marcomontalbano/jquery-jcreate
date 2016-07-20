@@ -84,10 +84,13 @@
         {
             for (var key in container)
             {
-                if( $(this).is( container[key].$element ) && container[key].handleObj.selector === handleObj.selector )
+                if ( container.hasOwnProperty( key ) )
                 {
-                    delete container[key];
-                    break;
+                    if( $(this).is( container[key].$element ) && container[key].handleObj.selector === handleObj.selector )
+                    {
+                        delete container[key];
+                        break;
+                    }
                 }
             }
         },
@@ -206,22 +209,25 @@
 
             for (var key in container)
             {
-                current = container[key];
-                current.$element.find( current.handleObj.selector ).each(function()
+                if ( container.hasOwnProperty( key ) )
                 {
-                    var   $this    = $(this)
-                        , data_key = '$.event.special.create'
-                        , data_sep = ','
-                        , data     = $this.data(data_key) ? $this.data(data_key).split(data_sep) : []
-                    ;
-
-                    if ( $.inArray(key, data) === -1 )
+                    current = container[key];
+                    current.$element.find( current.handleObj.selector ).each(function()
                     {
-                        data.push(key);
-                        $this.data(data_key, data.join(data_sep));
-                        current.handleObj.handler.apply( this, arguments );
-                    }
-                });
+                        var   $this    = $(this)
+                            , data_key = '$.event.special.create'
+                            , data_sep = ','
+                            , data     = $this.data(data_key) ? $this.data(data_key).split(data_sep) : []
+                        ;
+
+                        if ( $.inArray(key, data) === -1 )
+                        {
+                            data.push(key);
+                            $this.data(data_key, data.join(data_sep));
+                            current.handleObj.handler.apply( this, arguments );
+                        }
+                    });
+                }
             }
         }
 

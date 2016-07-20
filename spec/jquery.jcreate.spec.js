@@ -49,6 +49,17 @@ describe("jCreate", function() {
         expect( $container.find('> div') ).not.toHaveCss(style_red);
     });
 
+    it("shouldn't break if the array object has been extended.", function()
+    {
+        // given
+        Array.prototype.newCoolFunction = function() {};
+
+        // then
+        expect(function() {
+            $container.append( $('<div>') );
+        }).not.toThrow();
+    });
+
     it("should execute the callback just one time for each created element.", function()
     {
         // given
