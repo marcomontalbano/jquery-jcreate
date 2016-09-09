@@ -1,13 +1,16 @@
-# default
+# system files
 .DS_Store
-
-# jasmine
-SpecRunner.html
+__MACOSX
+Thumbs.db
 
 # node.js
 .grunt/
 /node_modules
-/output
 /bower_components
+npm-debug.log
+
+# jasmine
+SpecRunner.html
+/output
 
 # others

@@ -41,6 +41,11 @@ $( '#dataTable tbody' ).on( 'create', 'tr', function() {
 $( '#dataTable tbody' ).append('<tr><td>this is a new row!</td></tr>');
 ```
 
+### jQuery Support
+
+Since I use the last version of `jasmine-jquery` library in order to test my own plugin, I cannot ensure that the plugin works with jQuery 1.7 and below, due to the fact that `jasmine-jquery` uses methods that were introduced in jQuery 1.8.
+
+
 Development
 -----------
 

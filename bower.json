@@ -1,20 +1,23 @@
 {
     "name": "jquery-jcreate",
     "description": "jCreate is a plugin for jQuery that adds a new bindable event. Now you can do something cool when one or more elements are created and are available on the page.",
-    "author" : {
-        "name"  : "Marco Montalbano",
-        "email" : "marcomontalbano.work@gmail.com",
-        "url"   : "https://github.com/mmontalbano"
-    },
+    "homepage": "https://marcomontalbano.com/portfolio/3/jcreate",
+    "main": [
+        "dist/jquery.jcreate.min.js"
+    ],
+    "authors": [
+        "Marco Montalbano <me@marcomontalbano.com> (https://marcomontalbano.com)"
+    ],
     "license": "MIT",
     "keywords": [
         "mmontalbano",
         "marcomontalbano",
         "jquery",
         "jcreate",
-        "plugin"
+        "plugin",
+        "oncreate",
+        "event"
     ],
-    "moduleType": [],
     "ignore": [
         "**/.*",
         "bower_components",
@@ -22,17 +25,14 @@
         "lib",
         "node_modules",
         "output",
-        "spec"
-    ],
-    "main": [
-        "dist/jquery.jcreate.min.js"
+        "spec",
+        "src",
+        "Gruntfile.js"
     ],
     "dependencies": {
         "jquery" : ">=1.8"
     },
     "devDependencies": {
-        "jquery-1.6"  : "jquery#~1.6.0"  ,
-        "jquery-1.7"  : "jquery#~1.7.0"  ,
         "jquery-1.8"  : "jquery#~1.8.0"  ,
         "jquery-1.9"  : "jquery#~1.9.0"  ,
         "jquery-1.10" : "jquery#~1.10.0" ,
@@ -40,6 +40,8 @@
         "jquery-1.12" : "jquery#~1.12.0" ,
         "jquery-2.0"  : "jquery#~2.0.0"  ,
         "jquery-2.1"  : "jquery#~2.1.0"  ,
-        "jquery-2.2"  : "jquery#~2.2.0"
+        "jquery-2.2"  : "jquery#~2.2.0"  ,
+        "jquery-3.0"  : "jquery#~3.0.0"  ,
+        "jquery-3.1"  : "jquery#~3.1.0"
     }
 }

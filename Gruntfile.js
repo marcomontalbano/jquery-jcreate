@@ -10,7 +10,9 @@ module.exports = function(grunt)
         },
 
         //
-        
+        bower : grunt.file.readJSON('bower.json'),
+
+        //
     };
 
     // require it at the top and pass in the grunt instance

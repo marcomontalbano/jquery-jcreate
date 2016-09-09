@@ -5,3 +5,4 @@ test:
 build:
     - 'test'
     - 'uglify:all'
+    - 'sync:src'
