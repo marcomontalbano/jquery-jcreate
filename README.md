@@ -16,7 +16,7 @@ Install with Bower
 You can install jCreate using [Bower]:
 
 ```sh
-bower install jquery-jcreate
+bower install jquery-jcreate --save
 ```
 
 And now you can include it in you project with a `<script>` tag.
