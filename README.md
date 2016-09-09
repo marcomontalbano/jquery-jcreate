@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/mmontalbano/jquery-jcreate.svg?branch=master)](https://travis-ci.org/mmontalbano/jquery-jcreate)
+[![Build Status](https://travis-ci.org/marcomontalbano/jquery-jcreate.svg?branch=master)](https://travis-ci.org/marcomontalbano/jquery-jcreate)
 
 jCreate
 =======
