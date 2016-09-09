@@ -1,9 +1,9 @@
 {
     "name": "jquery-jcreate",
-    "description": "jCreate is a plugin for jQuery that adds a new bindable event. Now you can do something cool when one or more elements are created and are available on the page.",
+    "description": "jCreate is a new special event for jQuery. Just use .on('create', ..); the callback will be triggered when elements are created on the page.",
     "homepage": "https://marcomontalbano.com/portfolio/3/jcreate",
     "main": [
-        "dist/jquery.jcreate.min.js"
+        "dist/jquery.jcreate.js"
     ],
     "authors": [
         "Marco Montalbano <me@marcomontalbano.com> (https://marcomontalbano.com)"
