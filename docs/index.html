@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>jCreate by marcomontalbano</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>jCreate</h1>
+        <h2>jCreate is a new special event for jQuery. Just use .on(&#39;create&#39;, ..); the callback will be triggered when elements are created on the page.</h2>
+        <a href="https://github.com/marcomontalbano/jquery-jcreate" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <p><a href="https://travis-ci.org/marcomontalbano/jquery-jcreate"><img src="https://travis-ci.org/marcomontalbano/jquery-jcreate.svg?branch=master" alt="Build Status"></a></p>
+
+<h1>
+<a id="jcreate" class="anchor" href="#jcreate" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>jCreate</h1>
+
+<p>jCreate is a plugin for jQuery that adds a new bindable event.</p>
+
+<p>Now you can do something cool when one or more elements are created and are available on the page.</p>
+
+<p>See it in action with <a href="http://jsfiddle.net/mmontalbano/97cnLqgm/">JSFiddle</a>.</p>
+
+<h2>
+<a id="install-with-bower" class="anchor" href="#install-with-bower" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install with Bower</h2>
+
+<p>You can install jCreate using <a href="http://bower.io/">Bower</a>:</p>
+
+<div class="highlight highlight-source-shell"><pre>bower install --save jquery-jcreate</pre></div>
+
+<p>And now you can include it in you project with a <code>&lt;script&gt;</code> tag.</p>
+
+<div class="highlight highlight-source-shell"><pre>
+<span class="pl-k">&lt;</span>script <span class="pl-c1">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span> src=<span class="pl-s"><span class="pl-pds">"</span>jquery.jcreate.min.js<span class="pl-pds">"</span></span><span class="pl-k">&gt;&lt;</span>/script<span class="pl-k">&gt;</span></pre></div>
+
+<h2>
+<a id="how-to-use" class="anchor" href="#how-to-use" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to use</h2>
+
+<p>jCreate works with the <a href="http://api.jquery.com/on/#direct-and-delegated-events">jQuery Event Delegation</a>.</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c">// bind 'create' event.</span>
+<span class="pl-en">$</span>( <span class="pl-s"><span class="pl-pds">'</span>#dataTable tbody<span class="pl-pds">'</span></span> ).<span class="pl-en">on</span>( <span class="pl-s"><span class="pl-pds">'</span>create<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>tr<span class="pl-pds">'</span></span>, <span class="pl-k">function</span>() {
+    <span class="pl-en">console</span>.<span class="pl-c1">log</span>( <span class="pl-en">$</span>( <span class="pl-v">this</span> ).<span class="pl-c1">text</span>() );
+});
+
+<span class="pl-c">// add a new 'row'.</span>
+<span class="pl-en">$</span>( <span class="pl-s"><span class="pl-pds">'</span>#dataTable tbody<span class="pl-pds">'</span></span> ).<span class="pl-c1">append</span>(<span class="pl-s"><span class="pl-pds">'</span>&lt;tr&gt;&lt;td&gt;this is a new row!&lt;/td&gt;&lt;/tr&gt;<span class="pl-pds">'</span></span>);</pre></div>
+
+<h3>
+<a id="jquery-support" class="anchor" href="#jquery-support" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>jQuery Support</h3>
+
+<p>Since I use the last version of <code>jasmine-jquery</code> library in order to test my own plugin, I cannot ensure that the plugin works with jQuery 1.7 and below, due to the fact that <code>jasmine-jquery</code> uses methods that were introduced in jQuery 1.8.</p>
+
+<h2>
+<a id="development" class="anchor" href="#development" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Development</h2>
+
+<h3>
+<a id="install-grunt-and-bower" class="anchor" href="#install-grunt-and-bower" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a> Install Grunt and Bower</h3>
+
+<p>To install Grunt and Bower, you must first download and install <a href="which%20includes%20npm">node.js</a>.</p>
+
+<p>Then, using the command line:</p>
+
+<div class="highlight highlight-source-shell"><pre><span class="pl-c"># install `grunt-cli` globally</span>
+npm install -g grunt-cli
+
+<span class="pl-c"># install `bower` globally</span>
+npm install -g bower
+
+<span class="pl-c"># navigate to the root of your project, then run</span>
+npm install
+bower install</pre></div>
+
+<h3>
+<a id="available-grunt-tasks" class="anchor" href="#available-grunt-tasks" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Available Grunt tasks</h3>
+
+<ul>
+<li>
+<code>jshint</code>  Validate files with <a href="https://www.npmjs.com/package/grunt-contrib-jshint">JSHint</a>.</li>
+<li>
+<code>jasmine</code> Run <a href="https://www.npmjs.com/package/grunt-contrib-jasmine">jasmine</a> specs headlessly through PhantomJS.</li>
+<li>
+<code>uglify</code>  Minify files with <a href="https://www.npmjs.com/package/grunt-contrib-uglify">UglifyJS</a>.</li>
+<li>
+<code>watch</code>   Run predefined tasks whenever watched files change.</li>
+<li>
+<code>test</code>    Alias for "jshint", "jasmine" tasks.</li>
+<li>
+<code>build</code>   Alias for "test", "uglify" tasks.</li>
+</ul>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/marcomontalbano/jquery-jcreate/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/marcomontalbano/jquery-jcreate/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/marcomontalbano/jquery-jcreate"></a> is maintained by <a href="https://github.com/marcomontalbano">marcomontalbano</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>

@@ -21,6 +21,7 @@
     "ignore": [
         "**/.*",
         "bower_components",
+        "docs",
         "grunt",
         "lib",
         "node_modules",
