@@ -7,7 +7,7 @@ jCreate is a plugin for jQuery that adds a new bindable event.
 
 Now you can do something cool when one or more elements are created and are available on the page.
 
-See it in action with [JSFiddle].
+See it in action with [CodePen].
 
 
 Install with Bower
@@ -74,13 +74,14 @@ bower install
 * `jasmine` Run [jasmine] specs headlessly through PhantomJS.
 * `uglify`  Minify files with [UglifyJS].
 * `watch`   Run predefined tasks whenever watched files change.
+* `sync`    Synchronize content of two directories.
 * `test`    Alias for "jshint", "jasmine" tasks.
 * `build`   Alias for "test", "uglify" tasks.
 
 [Bower]: <http://bower.io/>
 [jQuery Event Delegation]: <http://api.jquery.com/on/#direct-and-delegated-events>
 [node.js]: <https://nodejs.org/>
-[JSFiddle]: <http://jsfiddle.net/mmontalbano/97cnLqgm/>
+[CodePen]: <http://codepen.io/marcomontalbano/details/pEjWgW>
 [download and install node.js]: <https://nodejs.org/>
 
 [JSHint]:   <https://www.npmjs.com/package/grunt-contrib-jshint>

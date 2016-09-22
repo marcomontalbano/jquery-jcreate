@@ -8,7 +8,7 @@ describe("jCreate", function() {
 
     beforeEach(function ()
     {
-        loadFixtures('jcreate.html');
+        loadFixtures('container.html');
         $container = $('#container');
 
         // add 'create' event to container.
@@ -19,23 +19,20 @@ describe("jCreate", function() {
 
     afterEach(function () {
         $container.remove();
-        $container  .off('create');
-        $(document) .off('create');
+        $container.off('create');
     });
 
     it("should provide the 'create' special event.", function() {
         expect( $.event.special.create ).toEqual( jasmine.any(Object) );
     });
 
-    it("should work binding the event on $('document').", function()
+    it("should execute the callback if 'on' function is invoked.", function()
     {
         // when
-        $(document).on('create', '#container', function() {
-            $(this).css( style_red );
-        });
+        $container.append( $('<div>') );
 
         // then
-        expect( $container ).toHaveCss(style_red);
+        expect( $container.find('> div') ).toHaveCss(style_red);
     });
 
     it("shouldn't execute the callback if 'off' function is invoked.", function()
@@ -78,6 +75,39 @@ describe("jCreate", function() {
         // then
         expect( $container.find('> div:eq(0)') ).toHaveCss( style_blue );
         expect( $container.find('> div:eq(1)') ).toHaveCss( style_red  );
+    });
+
+    describe("binding the event on $('document')", function()
+    {
+        afterEach(function () {
+            $(document).off('create');
+        });
+
+        it("should work.", function()
+        {
+            // when
+            $container.append( $('<a class="pippo">') );
+
+            var counter = 0;
+            $(document).on('create', 'a.pippo', function() {
+                counter++;
+                $(this).css( style_red );
+            });
+
+            // given
+            $container.append( $('<span>') );
+            $container.append( $('<span>') );
+            $container.append( $('<span>') );
+
+            // when
+            $container.append( $('<a class="pippo">') );
+            $container.find('> span:eq(0)').replaceWith( $('<a class="pippo">') );
+
+            // then
+            expect( counter ).toBe(3);
+            expect( $container.find('> a:eq(0)') ).toHaveCss( style_red );
+            expect( $container.find('> a:eq(1)') ).toHaveCss( style_red );
+        });
     });
 
     describe("should execute the callback when", function()

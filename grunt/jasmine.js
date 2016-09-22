@@ -25,38 +25,41 @@ module.exports = function (grunt, options) {
             outfile : 'SpecRunner.html',
 
             // Prevents the auto-generated specfile used to run your tests from being automatically deleted.
-            keepRunner : true
+            keepRunner : true,
         },
 
         // // Your source files.
-        // src : '<%= files.spec %>',
+        //src : '<%= files.src %>',
     };
 
 
     for ( var _jquery_version in options.bower.devDependencies )
     {
-        if( options.bower.devDependencies.hasOwnProperty( _jquery_version ) )
+        if ( options.bower.devDependencies.hasOwnProperty( _jquery_version ) )
         {
-            // Test against jQuery x.x.x
-            //var _jquery_path = _jqueries[ _jquery_version ];
-            var _jquery_path = 'bower_components/' + _jquery_version + '/';
+            if ( /^jquery-[0-9\.]+$/.test( _jquery_version ) )
+            {
+                // Test against jQuery x.x.x
+                //var _jquery_path = _jqueries[ _jquery_version ];
+                var _jquery_path = 'bower_components/' + _jquery_version + '/';
 
-            _exports[ _jquery_version ] = {
+                _exports[ _jquery_version ] = {
 
-                // Your source files.
-                src: '<%= files.src %>',
+                    // Your source files.
+                    src: '<%= files.src %>',
 
-                options: {
+                    options: {
 
-                    // Third party libraries like jQuery & generally anything loaded before source, specs, and helpers.
-                    vendor: [
-                        _jquery_path + 'jquery.js',
-                        _jquery_path + 'dist/jquery.js',
-                        'node_modules/jasmine-jquery/lib/jasmine-jquery.js',
-                        'lib/jasmine-jquery-config.js',
-                    ],
-                },
-            };
+                        // Third party libraries like jQuery & generally anything loaded before source, specs, and helpers.
+                        vendor: [
+                            _jquery_path + 'jquery.js',
+                            _jquery_path + 'dist/jquery.js',
+                            'node_modules/jasmine-jquery/lib/jasmine-jquery.js',
+                            'lib/jasmine-jquery-config.js',
+                        ],
+                    },
+                };
+            }
         }
     }
 
