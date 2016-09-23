@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/marcomontalbano/jquery-jcreate.svg?branch=master)](https://travis-ci.org/marcomontalbano/jquery-jcreate)
-[![Bower](https://img.shields.io/bower/v/jquery-jcreate.svg?style=flat)](https://github.com/marcomontalbano/jquery-jcreate)
+[![Bower](https://img.shields.io/bower/v/jquery-jcreate.svg?style=flat)](https://github.com/marcomontalbano/jquery-jcreate/releases/latest)
 
 jCreate
 =======
