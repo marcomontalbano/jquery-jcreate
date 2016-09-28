@@ -13,9 +13,9 @@
  *
  */
 
-(function($, append, prepend, before, after, html, replaceWith)
+(function($, domManip, append, prepend, before, after, html, replaceWith)
 {
-    var _container = [];
+    var _createList = [];
 
     $.event.special.create =
     {
@@ -67,21 +67,17 @@
         {
             var $this = $(this);
 
-            var item = {
+            var _createItem = {
+                id          : _createList.length.toString(),
                 element     : this,
                 $element    : $this,
                 is_document : $this.is(document),
-                handleObj   : handleObj,
-                $cache      : $()
+                handleObj   : handleObj
             };
 
-            _container.push(item);
+            _createList.push( _createItem );
 
-            var $elements = item.is_document ? $( item.handleObj.selector ) : item.$element.find( item.handleObj.selector );
-
-            _log( '• add #' + _container.length, item, $elements );
-
-            create( $elements, item );
+            _create( _createItem );
         },
 
         /**
@@ -93,17 +89,14 @@
          */
         remove: function( handleObj )
         {
-            for (var key in _container)
+            for (var _createList_key in _createList)
             {
-                if ( _container.hasOwnProperty( key ) )
+                if ( _createList.hasOwnProperty( _createList_key ) )
                 {
-                    if ( _container[key].handleObj.selector === handleObj.selector )
+                    if( $(this).is( _createList[_createList_key].$element ) && _createList[_createList_key].handleObj.selector === handleObj.selector )
                     {
-                        if( $(this).is( _container[key].element ) )
-                        {
-                            _container.splice(key, 1);
-                            break;
-                        }
+                        delete _createList[_createList_key];
+                        break;
                     }
                 }
             }
@@ -160,102 +153,81 @@
         handle: function( event, data )
         {
 
-        },
-
-        /**
-         * debug: boolean
-         *  If debug equal true the console with print the time execution.
-         */
-         debug: false
-    };
-
-    //
-    var _log = function() {
-        if ( $.event.special.create.debug ) {
-            console.log.apply( this, arguments );
         }
     };
 
+
+    //// DOM manipulation methods
+    //$.fn.domManip = function() {
+    //    return _domManip.apply( domManip.apply( this, arguments ), arguments );
+    //};
+
     // "append" DOM manipulation.
     $.fn.append = function() {
-        return domManip.apply( append.apply( this, arguments ), arguments );
+        return _domManip.apply( append.apply( this, arguments ), arguments );
     };
 
     //// "prepend" DOM manipulation.
     //$.fn.prepend = function() {
-    //    return domManip.apply( prepend.apply( this, arguments ), arguments );
+    //    return _domManip.apply( prepend.apply( this, arguments ), arguments );
     //};
 
     // "before" DOM manipulation.
     $.fn.before = function() {
-        return domManip.apply( before.apply( this, arguments ), arguments );
+        return _domManip.apply( before.apply( this, arguments ), arguments );
     };
 
     // "after" DOM manipulation.
     $.fn.after = function() {
-        return domManip.apply( after.apply( this, arguments ), arguments );
+        return _domManip.apply( after.apply( this, arguments ), arguments );
     };
 
     // "html" DOM manipulation.
     $.fn.html = function() {
-        return domManip.apply( html.apply( this, arguments ), arguments );
+        return _domManip.apply( html.apply( this, arguments ), arguments );
     };
 
     // "replaceWith" DOM manipulation.
     $.fn.replaceWith = function() {
-        return domManip.apply( replaceWith.apply( this, arguments ), arguments );
+        return _domManip.apply( replaceWith.apply( this, arguments ), arguments );
     };
 
     // 
-    var create = function( $elements, container )
+    var _create = function( _createItem )
     {
-        if ( $elements.length >= 1 )
-        {
-            $elements.not( container.$cache ).each(function()
-            {
-                container.$cache = container.$cache.add( this );
-                container.handleObj.handler.apply( this, arguments );
-            });
-        }
-    };
+        var $elements = _createItem.is_document ? $( _createItem.handleObj.selector ) : _createItem.$element.find( _createItem.handleObj.selector );
 
-    //
-    var domManip = function()
-    {
-        // if empty, jCreate must do nothing.
-        if ( _container.length >= 1 )
+        $elements.each(function()
         {
-            var   current   = null
-                , $elements = null
+            var   $this    = $(this)
+                , data_key = '$.event.special.create'
+                , data_sep = ','
+                , data     = $this.data(data_key) ? $this.data(data_key).split(data_sep) : []
             ;
 
-            for (var _container_key in _container)
+            if ( $.inArray( _createItem.id, data) === -1 )
             {
-                if ( _container.hasOwnProperty( _container_key ) )
+                data.push( _createItem.id );
+                $this.data(data_key, data.join(data_sep));
+                _createItem.handleObj.handler.apply( this, arguments );
+            }
+        });
+    };
+
+    // 
+    var _domManip = function()
+    {
+        if (_createList.length >= 1)
+        {
+            var _createItem  = null;
+
+            for (var key in _createList)
+            {
+                if ( _createList.hasOwnProperty( key ) )
                 {
-                    current   = _container[ _container_key ];
-                    $elements = $();
+                    _createItem = _createList[ key ];
 
-                    if ( current.is_document )
-                    {
-                        for (var argument_key in arguments)
-                        {
-                            if ( arguments[argument_key] instanceof $ )
-                            {
-                                if ( arguments[argument_key].is( current.handleObj.selector ) )
-                                {
-                                    $elements = $elements.add( arguments[argument_key] );
-                                }
-                            }
-                        }
-                    } else {
-                        $elements = current.$element.find( current.handleObj.selector );
-                    }
-
-                    _log( '• domManip', $elements, arguments );
-
-                    create( $elements, current );
-
+                    _create( _createItem );
                 }
             }
         }
@@ -265,6 +237,7 @@
 
 })(
     jQuery,
+    jQuery.fn.domManip,
     jQuery.fn.append,
     jQuery.fn.prepend,
     jQuery.fn.before,

@@ -77,6 +77,22 @@ describe("jCreate", function() {
         expect( $container.find('> div:eq(1)') ).toHaveCss( style_red  );
     });
 
+    it("should execute the callback when elements are created inside other elements.", function()
+    {
+        // given
+        $container.on('create', 'div.inner', function() {
+            $(this).css( style_green );
+        });
+
+        var $element = $('<span><div class="inner"></div></span>');
+
+        // when
+        $container.append( $element );
+
+        // then
+        expect( $element.find('div.inner') ).toHaveCss( style_green );
+    });
+
     describe("binding the event on $('document')", function()
     {
         afterEach(function () {
@@ -107,6 +123,22 @@ describe("jCreate", function() {
             expect( counter ).toBe(3);
             expect( $container.find('> a:eq(0)') ).toHaveCss( style_red );
             expect( $container.find('> a:eq(1)') ).toHaveCss( style_red );
+        });
+
+        it("should execute the callback when elements are created inside other elements.", function()
+        {
+            // given
+            $(document).on('create', 'div.inner', function() {
+                $(this).css( style_green );
+            });
+
+            var $element = $('<span><div class="inner"></div></span>');
+
+            // when
+            $container.append( $element );
+
+            // then
+            expect( $element.find('div.inner') ).toHaveCss( style_green );
         });
     });
 

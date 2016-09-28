@@ -1,6 +1,7 @@
 module.exports = {
     all: {
         options: {
+            sourceMap : true,
             banner: ''
                   + '/**\n'
                   + ' * <%= package.filename %>.js v<%= package.version %> - <%= grunt.template.today("yyyy-mm-dd") %> - <%= package.firstRelease %>\n'
