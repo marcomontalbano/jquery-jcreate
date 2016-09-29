@@ -77,7 +77,7 @@ bower install
 * `watch`   Run predefined tasks whenever watched files change.
 * `sync`    Synchronize content of two directories.
 * `test`    Alias for "jshint", "jasmine" tasks.
-* `build`   Alias for "test", "uglify" tasks.
+* `build`   Alias for "test", "uglify", "sync" tasks.
 
 [Bower]: <http://bower.io/>
 [jQuery Event Delegation]: <http://api.jquery.com/on/#direct-and-delegated-events>
