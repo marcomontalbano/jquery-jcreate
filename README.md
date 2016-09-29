@@ -52,7 +52,7 @@ Development
 
 ### Install Grunt and Bower
 
-To install Grunt and Bower, you must first download and install [node.js] (which includes npm).
+To install Grunt and Bower, you must first download and install [node.js] - which includes npm.
 
 Then, using the command line:
 
