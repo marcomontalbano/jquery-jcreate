@@ -153,7 +153,13 @@
         handle: function( event, data )
         {
 
-        }
+        },
+
+        /**
+         * version: string
+         *  Version number.
+         */
+        version: '1.0.3'
     };
 
 

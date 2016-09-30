@@ -84,13 +84,13 @@ describe("jCreate", function() {
             $(this).css( style_green );
         });
 
-        var $element = $('<span><div class="inner"></div></span>');
+        var element = '<span><div class="inner"></div></span>';
 
         // when
-        $container.append( $element );
+        $container.append( element );
 
         // then
-        expect( $element.find('div.inner') ).toHaveCss( style_green );
+        expect( $container.find('div.inner') ).toHaveCss( style_green );
     });
 
     describe("binding the event on $('document')", function()
@@ -132,13 +132,13 @@ describe("jCreate", function() {
                 $(this).css( style_green );
             });
 
-            var $element = $('<span><div class="inner"></div></span>');
+            var element = '<span><div class="inner"></div></span>';
 
             // when
-            $container.append( $element );
+            $container.append( element );
 
             // then
-            expect( $element.find('div.inner') ).toHaveCss( style_green );
+            expect( $container.find('div.inner') ).toHaveCss( style_green );
         });
     });
 

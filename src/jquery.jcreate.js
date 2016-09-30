@@ -153,7 +153,13 @@
         handle: function( event, data )
         {
 
-        }
+        },
+
+        /**
+         * version: string
+         *  Version number.
+         */
+        version: '{{ VERSION }}'
     };
 
 

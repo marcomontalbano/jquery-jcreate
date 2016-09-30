@@ -6,3 +6,4 @@ build:
     - 'test'
     - 'uglify:all'
     - 'sync:src'
+    - 'string-replace:version'
