@@ -13,7 +13,7 @@
  *
  */
 
-(function($, domManip, append, prepend, before, after, html, replaceWith)
+(function($, append, prepend, before, after, html, replaceWith)
 {
     var _createList = [];
 
@@ -67,17 +67,21 @@
         {
             var $this = $(this);
 
-            var _createItem = {
-                id          : _createList.length.toString(),
+            var item = {
                 element     : this,
                 $element    : $this,
                 is_document : $this.is(document),
-                handleObj   : handleObj
+                handleObj   : handleObj,
+                $cache      : $()
             };
 
-            _createList.push( _createItem );
+            _createList.push(item);
 
-            _create( _createItem );
+            var $elements = item.is_document ? $( item.handleObj.selector ) : item.$element.find( item.handleObj.selector );
+
+            _log( '• add #' + _createList.length, item, $elements );
+
+            _create( $elements, item );
         },
 
         /**
@@ -89,14 +93,17 @@
          */
         remove: function( handleObj )
         {
-            for (var _createList_key in _createList)
+            for (var key in _createList)
             {
-                if ( _createList.hasOwnProperty( _createList_key ) )
+                if ( _createList.hasOwnProperty( key ) )
                 {
-                    if( $(this).is( _createList[_createList_key].$element ) && _createList[_createList_key].handleObj.selector === handleObj.selector )
+                    if ( _createList[key].handleObj.selector === handleObj.selector )
                     {
-                        delete _createList[_createList_key];
-                        break;
+                        if( $(this).is( _createList[key].element ) )
+                        {
+                            _createList.splice(key, 1);
+                            break;
+                        }
                     }
                 }
             }
@@ -159,24 +166,26 @@
          * version: string
          *  Version number.
          */
-        version: '1.0.3'
+        version: '1.1.0-alpha',
+
+        /**
+         * debug: boolean
+         *  If debug equal true the console with print the time execution.
+         */
+         debug: false
     };
 
-
-    //// DOM manipulation methods
-    //$.fn.domManip = function() {
-    //    return _domManip.apply( domManip.apply( this, arguments ), arguments );
-    //};
+    //
+    var _log = function() {
+        if ( $.event.special.create.debug ) {
+            console.log.apply( this, arguments );
+        }
+    };
 
     // "append" DOM manipulation.
     $.fn.append = function() {
         return _domManip.apply( append.apply( this, arguments ), arguments );
     };
-
-    //// "prepend" DOM manipulation.
-    //$.fn.prepend = function() {
-    //    return _domManip.apply( prepend.apply( this, arguments ), arguments );
-    //};
 
     // "before" DOM manipulation.
     $.fn.before = function() {
@@ -199,41 +208,57 @@
     };
 
     // 
-    var _create = function( _createItem )
+    var _create = function( $elements, container )
     {
-        var $elements = _createItem.is_document ? $( _createItem.handleObj.selector ) : _createItem.$element.find( _createItem.handleObj.selector );
-
-        $elements.each(function()
+        if ( $elements.length >= 1 )
         {
-            var   $this    = $(this)
-                , data_key = '$.event.special.create'
-                , data_sep = ','
-                , data     = $this.data(data_key) ? $this.data(data_key).split(data_sep) : []
-            ;
-
-            if ( $.inArray( _createItem.id, data) === -1 )
+            $elements.not( container.$cache ).each(function()
             {
-                data.push( _createItem.id );
-                $this.data(data_key, data.join(data_sep));
-                _createItem.handleObj.handler.apply( this, arguments );
-            }
-        });
+                container.$cache = container.$cache.add( this );
+                container.handleObj.handler.apply( this, arguments );
+            });
+        }
     };
 
-    // 
+    //
     var _domManip = function()
     {
-        if (_createList.length >= 1)
+        // if empty, jCreate must do nothing.
+        if ( _createList.length >= 1 )
         {
-            var _createItem  = null;
+            var   current     = null
+                , $_elements  = null
+                , $_arguments = null
+                , $_argument  = null
+            ;
 
-            for (var key in _createList)
+            for (var _createList_key in _createList)
             {
-                if ( _createList.hasOwnProperty( key ) )
+                if ( _createList.hasOwnProperty( _createList_key ) )
                 {
-                    _createItem = _createList[ key ];
+                    current   = _createList[ _createList_key ];
+                    $_elements = $();
 
-                    _create( _createItem );
+                    if ( current.is_document )
+                    {
+                        for (var argument_key in arguments)
+                        {
+                            $_arguments = (arguments[argument_key] instanceof $) ? arguments[argument_key] : $( arguments[argument_key] );
+
+                            if ( $_arguments.is( current.handleObj.selector ) ) {
+                                $_elements = $_elements.add( $_arguments );
+                            } else {
+                                $_elements = this.find( current.handleObj.selector );
+                            }
+                        }
+                    } else {
+                        $_elements = current.$element.find( current.handleObj.selector );
+                    }
+
+                    _log( '• domManip', $_elements, arguments );
+
+                    _create( $_elements, current );
+
                 }
             }
         }
@@ -243,7 +268,6 @@
 
 })(
     jQuery,
-    jQuery.fn.domManip,
     jQuery.fn.append,
     jQuery.fn.prepend,
     jQuery.fn.before,
