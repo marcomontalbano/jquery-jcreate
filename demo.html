@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>jCreate • DEMO</title>
+        <style>
+            #container > div {
+                padding: 5px;
+                margin: 5px;
+                border-radius: 5px;
+                display: inline-block;
+            }
+            body {
+                font-family: Verdana;
+                font-size: 12px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>jCreate</h1>
+
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" src="dist/jquery.jcreate.min.js"></script>
+
+        <section>
+            <h2>Getting Started</h2>
+            <button>create new element</button>
+            <div id="container"></div>
+
+            <script type="text/javascript">
+
+                /**
+                 * DEMO 1
+                 */
+
+                // gets a random hexadecimal code between 0 and 255 (es: ff)
+                var rndHex = function() {
+                    return ('0' + Math.round(Math.random() * 255).toString(16)).slice(-2);
+                };
+
+                // generate a random hexadecimal color code (es: #ff00ff)
+                var generateColor = function() {
+                    return '#' + rndHex() + rndHex() + rndHex();
+                };
+
+                // clicking on the button ..
+                $('button').on('click', function() {
+
+                    // .. append a new <div> to #container
+                    $('#container').append( '<div>this is a new element</div>' );
+                });
+
+                // jCreate :)
+                $('#container').on('create', '> div', function() {
+
+                    // sets a random background color for each created element
+                    $(this).css('backgroundColor', generateColor());
+                });
+
+            </script>
+        </section>
+
+    </body>
+</html>
