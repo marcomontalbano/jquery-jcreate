@@ -5,7 +5,7 @@ module.exports = {
             '<%= files.src %>'    ,
             '<%= files.helper %>' ,
         ],
-        tasks: ['test'],
+        tasks: ['build'],
         options: {
             spawn: false,
         },

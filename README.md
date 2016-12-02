@@ -1,5 +1,5 @@
 [![Build Status](https://img.shields.io/travis/marcomontalbano/jquery-jcreate/master.svg?style=flat-square)](https://travis-ci.org/marcomontalbano/jquery-jcreate)
-[![Bower](https://img.shields.io/bower/v/jquery-jcreate.svg?style=flat-square)](https://github.com/marcomontalbano/jquery-jcreate/releases/latest)
+[![Bower](https://img.shields.io/bower/v/jquery-jcreate.svg?style=flat-square)](https://github.com/marcomontalbano/jquery-jcreate/releases/latest) [![Codacy](https://img.shields.io/codacy/grade/e27821fb6289410b8f58338c7e0bc686/master.svg?style=flat-square)](https://www.codacy.com/app/marcomontalbano/jquery-jcreate/dashboard)
 
 jCreate
 =======
@@ -47,6 +47,41 @@ $( '#dataTable tbody' ).append('<tr><td>this is a new row!</td></tr>');
 Since I use the last version of `jasmine-jquery` library in order to test my own plugin, I cannot ensure that the plugin works with jQuery 1.7 and below, due to the fact that `jasmine-jquery` uses methods that were introduced in jQuery 1.8.
 
 
+The Module Pattern
+------------------
+
+> _Modules are an integral piece of any robust application's architecture and typically help in keeping the units of code for a project both cleanly separated and organized._
+>
+> [Learning JavaScript Design Patterns - Addy Osmani]
+
+Following a simple example on how to use the Module pattern with jCreate.
+
+```javascript
+var helloWorldComponent = (function () {
+
+    var   module         = {}
+        , _componentName = 'hello-world'
+    ;
+
+    var _privateMethod = function() {
+        // ...
+    }
+
+    module.publicMethod = function() {
+        console.log( _privateVariable );
+    };
+
+    $(document).on('create', '[data-component~="' + _componentName + '"]', function( e ) {
+        module.publicMethod(); //= Hello World!
+    });
+
+    return module;
+})();
+
+helloWorldComponent.publicMethod(); //= Hello World!
+```
+
+
 Development
 -----------
 
@@ -84,6 +119,8 @@ bower install
 [node.js]: <https://nodejs.org/>
 [CodePen]: <http://codepen.io/marcomontalbano/details/pEjWgW>
 [download and install node.js]: <https://nodejs.org/>
+
+[Learning JavaScript Design Patterns - Addy Osmani]: <https://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript>
 
 [JSHint]:   <https://www.npmjs.com/package/grunt-contrib-jshint>
 [jasmine]:  <https://www.npmjs.com/package/grunt-contrib-jasmine>

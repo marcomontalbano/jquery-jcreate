@@ -15,7 +15,110 @@
 
 (function($, domManip, append, prepend, before, after, html, replaceWith)
 {
-    var _createList = [];
+    var   _createList = []
+        , _utils      = {}
+    ;
+
+    /**
+     * Recursively transform key strings to camel-case.
+     * @param {string} str
+     */
+    _utils.camelize = function( str ) {
+        return str.toLowerCase().replace(/[-_\.]+(.)/g, function(match, group) {
+            return group.toUpperCase();
+        });
+    };
+
+    /**
+     * Returns the first letter in lowercase.
+     * @param {string} str
+     */
+    _utils.firstLetterToLowerCase = function( str ) {
+        return str.charAt(0).toLowerCase() + str.slice(1);
+    };
+
+    /**
+     * Returns the first letter in uppercase.
+     * @param {string} str
+     */
+    _utils.firstLetterToUpperCase = function( str ) {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    };
+
+    _utils.filterDataByKey = function( data, key )
+    {
+        var   _data   = {}
+            , regexp  = new RegExp('^' + key + '([A-Za-z0-9]+)$')
+            , matches
+        ;
+
+        if ( typeof data !== 'object' ) {
+            return data;
+        }
+
+        for ( var data_key in data )
+        {
+            if ( data.hasOwnProperty( data_key ) )
+            {
+                matches = data_key.match( regexp );
+
+                if ( matches ) {
+                    _data[ _utils.firstLetterToLowerCase( matches[1] ) ] = data[ data_key ];
+                }
+            }
+        }
+
+        return _data;
+    };
+
+    // 
+    var _create = function( _createItem )
+    {
+        var $elements = _createItem.is_document ? $( _createItem.handleObj.selector ) : _createItem.$element.find( _createItem.handleObj.selector );
+
+        $elements.each(function()
+        {
+            var   $this    = $(this)
+                , data_key = '$.event.special.create'
+                , data_sep = ','
+                , data     = $this.data(data_key) ? $this.data(data_key).split(data_sep) : []
+            ;
+
+            if ( $.inArray( _createItem.id, data) === -1 )
+            {
+                data.push( _createItem.id );
+                $this.data(data_key, data.join(data_sep));
+                _createItem.handleObj.handler.apply( this, [{
+                    target  : this,
+                    $target : $this,
+                    options : function( key ) {
+                        return _utils.filterDataByKey( $this.data(), _utils.camelize(key) );
+                    }
+                }] );
+            }
+        });
+    };
+
+    // 
+    var _domManip = function()
+    {
+        if (_createList.length >= 1)
+        {
+            var _createItem  = null;
+
+            for (var key in _createList)
+            {
+                if ( _createList.hasOwnProperty( key ) )
+                {
+                    _createItem = _createList[ key ];
+
+                    _create( _createItem );
+                }
+            }
+        }
+
+        return this;
+    };
 
     $.event.special.create =
     {
@@ -156,6 +259,12 @@
         },
 
         /**
+         * utils: object
+         *  Collection of utilities.
+         */
+        utils: _utils,
+
+        /**
          * version: string
          *  Version number.
          */
@@ -198,50 +307,7 @@
         return _domManip.apply( replaceWith.apply( this, arguments ), arguments );
     };
 
-    // 
-    var _create = function( _createItem )
-    {
-        var $elements = _createItem.is_document ? $( _createItem.handleObj.selector ) : _createItem.$element.find( _createItem.handleObj.selector );
-
-        $elements.each(function()
-        {
-            var   $this    = $(this)
-                , data_key = '$.event.special.create'
-                , data_sep = ','
-                , data     = $this.data(data_key) ? $this.data(data_key).split(data_sep) : []
-            ;
-
-            if ( $.inArray( _createItem.id, data) === -1 )
-            {
-                data.push( _createItem.id );
-                $this.data(data_key, data.join(data_sep));
-                _createItem.handleObj.handler.apply( this, arguments );
-            }
-        });
-    };
-
-    // 
-    var _domManip = function()
-    {
-        if (_createList.length >= 1)
-        {
-            var _createItem  = null;
-
-            for (var key in _createList)
-            {
-                if ( _createList.hasOwnProperty( key ) )
-                {
-                    _createItem = _createList[ key ];
-
-                    _create( _createItem );
-                }
-            }
-        }
-
-        return this;
-    };
-
-})(
+}(
     jQuery,
     jQuery.fn.domManip,
     jQuery.fn.append,
@@ -250,4 +316,4 @@
     jQuery.fn.after,
     jQuery.fn.html,
     jQuery.fn.replaceWith
-);
+));

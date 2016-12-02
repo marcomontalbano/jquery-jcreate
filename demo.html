@@ -4,7 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>jCreate • DEMO</title>
         <style>
-            #container > div {
+            .container > div {
                 padding: 5px;
                 margin: 5px;
                 border-radius: 5px;
@@ -13,19 +13,23 @@
             body {
                 font-family: Verdana;
                 font-size: 12px;
+                line-height: 20px;
             }
+            h1 { margin-bottom: 40px }
+            hr { margin: 25px 0 }
         </style>
     </head>
     <body>
         <h1>jCreate</h1>
 
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" src="https://rawgit.com/FrDH/jQuery.dotdotdot/master/src/jquery.dotdotdot.min.js"></script>
         <script type="text/javascript" src="dist/jquery.jcreate.min.js"></script>
 
         <section>
-            <h2>Getting Started</h2>
-            <button>create new element</button>
-            <div id="container"></div>
+            <h2>#1 - Getting Started</h2>
+            <button id="button-1">create new element</button>
+            <div id="container-1" class="container"></div>
 
             <script type="text/javascript">
 
@@ -44,17 +48,88 @@
                 };
 
                 // clicking on the button ..
-                $('button').on('click', function() {
+                $('#button-1').on('click', function(e) {
 
-                    // .. append a new <div> to #container
-                    $('#container').append( '<div>this is a new element</div>' );
+                    // .. append a new <div> to #container-1
+                    $('#container-1').append( '<div>this is a new element</div>' );
                 });
 
                 // jCreate :)
-                $('#container').on('create', '> div', function() {
+                $('#container-1').on('create', '> div', function( e ) {
 
                     // sets a random background color for each created element
-                    $(this).css('backgroundColor', generateColor());
+                    e.$target.css('backgroundColor', generateColor());
+                });
+
+            </script>
+        </section>
+
+        <hr />
+
+        <section>
+            <h2>#2 - The Module Pattern</h2>
+            <button id="button-2">create new element</button>
+            <div id="container-2" class="container"></div>
+
+            <script type="text/javascript">
+
+                /**
+                 * DEMO 2
+                 */
+
+                // clicking on the button ..
+                $('#button-2').on('click', function(e) {
+
+                    // .. append a new <div> to #container-2
+                    $('#container-2').append( '<div data-component-background-color="' + generateColor() + '">this is a new element</div>' );
+                });
+
+                // jCreate :)
+                $('#container-2').on('create', '> div', function( e ) {
+
+                    // sets a random background color for each created element
+                    e.$target.css( e.options('component') );
+                });
+
+            </script>
+        </section>
+
+        <hr />
+
+        <section>
+            <h2>#3 - The Module Pattern</h2>
+
+            <style>
+                .box {
+                    background-color: #F8F299;
+                    border: 10px solid #fff;
+                    padding: 15px 20px 5px 20px;
+                    margin: 0 0 30px 0;
+                    box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+                    height: 100px;
+                    width: 295px;
+                    display: inline-block;
+                    vertical-align: top;
+                }
+            </style>
+
+            <div class="box">
+                <em>Lorem Ipsum</em> is simply dummy text of the <strong>printing and typesetting industry</strong>. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an <em>unknown printer</em> took a galley of type and scrambled it to make a type specimen book. <strong>It has survived not only five centuries</strong>, but also the leap into <strong>electronic typesetting</strong>, remaining essentially unchanged.
+            </div>
+            <div class="box" data-component="dotdotdot" data-dotdotdot="default" data-dotdotdot-ellipsis=" ...">
+                <em>Lorem Ipsum</em> is simply dummy text of the <strong>printing and typesetting industry</strong>. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an <em>unknown printer</em> took a galley of type and scrambled it to make a type specimen book. <strong>It has survived not only five centuries</strong>, but also the leap into <strong>electronic typesetting</strong>, remaining essentially unchanged.
+            </div>
+
+            <script type="text/javascript">
+
+                /**
+                 * DEMO 3
+                 */
+
+                // jCreate :)
+                $(document).on('create', '[data-component~="dotdotdot"]', function( e ) {
+                    console.log( e.$target.data('dotdotdot') );
+                    e.$target.dotdotdot( e.options('dotdotdot') );
                 });
 
             </script>
