@@ -15,7 +15,7 @@ describe("jCreate", function() {
 
         // add 'create' event to container.
         $container.on('create', '> div', function( e ) {
-            e.$target.css( style_red );
+            e.$currentTarget.css( style_red );
         });
     });
 
@@ -83,7 +83,7 @@ describe("jCreate", function() {
     {
         // given
         $container.on('create', 'div.inner', function( e ) {
-            e.$target.css( style_green );
+            e.$currentTarget.css( style_green );
         });
 
         var element = '<span><div class="inner"></div></span>';
@@ -109,7 +109,7 @@ describe("jCreate", function() {
             var counter = 0;
             $(document).on('create', 'a.pippo', function( e ) {
                 counter++;
-                e.$target.css( style_red );
+                e.$currentTarget.css( style_red );
             });
 
             // given
@@ -131,7 +131,7 @@ describe("jCreate", function() {
         {
             // given
             $(document).on('create', 'div.inner', function( e ) {
-                e.$target.css( style_green );
+                e.$currentTarget.css( style_green );
             });
 
             var element = '<span><div class="inner"></div></span>';
@@ -296,7 +296,8 @@ describe("jCreate", function() {
 
             // TEST-FIX for jQuery < 3.0 - https://jquery.com/upgrade-guide/3.0/#breaking-change-deprecated-context-and-selector-properties-removed
             if ( parseInt(/^[\d]+/.exec( $().jquery )[0]) < 3 ) {
-                $element.context = $element.get(0);
+                $element.context   = $element.get(0);
+                $container.context = $container.get(0);
             }
 
             // when
@@ -320,19 +321,35 @@ describe("jCreate", function() {
             }));
         });
 
-        it("should contain 'target'.", function()
+        it("should contain 'currentTarget'.", function()
         {
             // then
             expect( callback ).toHaveBeenCalledWith(jasmine.objectContaining({
-                target: $element.get(0)
+                currentTarget: $element.get(0)
             }));
         });
 
-        it("should contain '$target'.", function()
+        it("should contain '$currentTarget'.", function()
         {
             // then
             expect( callback ).toHaveBeenCalledWith(jasmine.objectContaining({
-                $target: $element
+                $currentTarget: $element
+            }));
+        });
+
+        it("should contain 'delegateTarget'.", function()
+        {
+            // then
+            expect( callback ).toHaveBeenCalledWith(jasmine.objectContaining({
+                delegateTarget: $container.get(0)
+            }));
+        });
+
+        it("should contain '$delegateTarget'.", function()
+        {
+            // then
+            expect( callback ).toHaveBeenCalledWith(jasmine.objectContaining({
+                $delegateTarget: $( $container.get(0) )
             }));
         });
 

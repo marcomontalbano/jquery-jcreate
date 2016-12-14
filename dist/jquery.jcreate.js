@@ -74,7 +74,7 @@
     // 
     var _create = function( _createItem )
     {
-        var $elements = _createItem.is_document ? $( _createItem.handleObj.selector ) : _createItem.$element.find( _createItem.handleObj.selector );
+        var $elements = _createItem.is_document ? $( _createItem.handleObj.selector ) : _createItem.$delegateTarget.find( _createItem.handleObj.selector );
 
         $elements.each(function()
         {
@@ -89,9 +89,11 @@
                 data.push( _createItem.id );
                 $this.data(data_key, data.join(data_sep));
                 _createItem.handleObj.handler.apply( this, [new $.Event('create', {
-                    target    : this,
-                    $target   : $this,
-                    options   : function( key ) {
+                    currentTarget   : this,
+                    $currentTarget  : $this,
+                    delegateTarget  : _createItem.delegateTarget,
+                    $delegateTarget : _createItem.$delegateTarget,
+                    options         : function( key ) {
                         return _utility.filterDataByKey( $this.data(), _utility.camelize(key) );
                     }
                 })] );
@@ -171,11 +173,11 @@
             var $this = $(this);
 
             var _createItem = {
-                id          : _createList.length.toString(),
-                element     : this,
-                $element    : $this,
-                is_document : $this.is(document),
-                handleObj   : handleObj
+                id              : _createList.length.toString(),
+                delegateTarget  : this,
+                $delegateTarget : $this,
+                is_document     : $this.is(document),
+                handleObj       : handleObj
             };
 
             _createList.push( _createItem );
@@ -196,7 +198,7 @@
             {
                 if ( _createList.hasOwnProperty( _createList_key ) )
                 {
-                    if( $(this).is( _createList[_createList_key].$element ) && _createList[_createList_key].handleObj.selector === handleObj.selector )
+                    if( $(this).is( _createList[_createList_key].$delegateTarget ) && _createList[_createList_key].handleObj.selector === handleObj.selector )
                     {
                         delete _createList[_createList_key];
                         break;

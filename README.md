@@ -53,9 +53,33 @@ $( document ).on('create', 'a', function( event ) {
 
 * **timeStamp** - The difference in milliseconds between the time the browser created the event and January 1, 1970.
 
-* **target** - The DOM element that initiated the event.
+* **currentTarget** - The current DOM element within the event bubbling phase.
+```javascript
+$( document ).on('create', 'a', function( event ) {
+    console.log( event.currentTarget === this ); //= true
+});
+```
 
-* **$target** - The DOM element that initiated the event as jQuery object.
+* **$currentTarget** - The current DOM element within the event bubbling phase as jQuery object.
+```javascript
+$( document ).on('create', 'a', function( event ) {
+    console.log( event.$currentTarget.is( $(this) ) ); //= true
+});
+```
+
+* **delegateTarget** - The element where the currently-called jQuery event handler was attached.
+```javascript
+$( document ).on('create', 'a', function( event ) {
+    console.log( event.delegateTarget === document ); //= true
+});
+```
+
+* **$delegateTarget** - The jQuery element where the currently-called jQuery event handler was attached.
+```javascript
+$( document ).on('create', 'a', function( event ) {
+    console.log( event.$delegateTarget.is( $(document) ) ); //= true
+});
+```
 
 * **options** - Method that filters data by key.
 ```html

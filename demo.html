@@ -55,10 +55,10 @@
                 });
 
                 // jCreate :)
-                $('#container-1').on('create', '> div', function( e ) {
+                $('#container-1').on('create', '> div', function( event ) {
 
                     // sets a random background color for each created element
-                    e.$target.css('backgroundColor', generateColor());
+                    event.$currentTarget.css('backgroundColor', generateColor());
                 });
 
             </script>
@@ -85,10 +85,10 @@
                 });
 
                 // jCreate :)
-                $('#container-2').on('create', '> div', function( e ) {
+                $('#container-2').on('create', '> div', function( event ) {
 
                     // sets a random background color for each created element
-                    e.$target.css( e.options('component') );
+                    event.$currentTarget.css( event.options('component') );
                 });
 
             </script>
@@ -127,10 +127,18 @@
                  */
 
                 // jCreate :)
-                $(document).on('create', '[data-component~="dotdotdot"]', function( e ) {
-                    console.log( e.$target.data('dotdotdot') );
-                    console.log( e.options('dotdotdot') );
-                    e.$target.dotdotdot( e.options('dotdotdot') );
+                $(document).on('create', '[data-component~="dotdotdot"]', function( event ) {
+
+                    // log
+                    console.log( event.currentTarget === this );
+                    console.log( event.$currentTarget.is( $(this) ) );
+                    console.log( event.delegateTarget === document );
+                    console.log( event.$delegateTarget.is( $(document) ) );
+
+                    console.log( event.$currentTarget.data('dotdotdot') );
+                    console.log( event.options('dotdotdot') );
+
+                    event.$currentTarget.dotdotdot( event.options('dotdotdot') );
                 });
 
             </script>
