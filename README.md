@@ -24,7 +24,6 @@ bower install --save jquery-jcreate
 And now you can include it in you project with a `<script>` tag.
 
 ```sh
-
 <script type="text/javascript" src="jquery.jcreate.min.js"></script>
 ```
 
@@ -35,12 +34,37 @@ jCreate works with the [jQuery Event Delegation].
 
 ```js
 // bind 'create' event.
-$( '#dataTable tbody' ).on( 'create', 'tr', function() {
-    console.log( $( this ).text() );
+$( '#dataTable tbody' ).on( 'create', 'tr', function( e ) {
+    console.log( e.$target.text() );
 });
 
 // add a new 'row'.
 $( '#dataTable tbody' ).append('<tr><td>this is a new row!</td></tr>');
+```
+
+### Event
+
+* **type** - Describes the nature of the event.
+```javascript
+$( document ).on('create', 'a', function( event ) {
+    console.log( event.type ); //= "create"
+});
+```
+
+* **timeStamp** - The difference in milliseconds between the time the browser created the event and January 1, 1970.
+
+* **target** - The DOM element that initiated the event.
+
+* **$target** - The DOM element that initiated the event as jQuery object.
+
+* **options** - Method that filters data by key.
+```html
+<div data-component-name="hello-world"></div>
+```
+```javascript
+$( document ).on('create', 'div', function( event ) {
+    console.log( event.options('component') ); //= {name:"hello-world"}
+});
 ```
 
 ### jQuery Support
@@ -72,7 +96,7 @@ var helloWorldComponent = (function () {
         console.log( _privateVariable );
     };
 
-    $(document).on('create', '[data-component~="' + _componentName + '"]', function( e ) {
+    $(document).on('create', '[data-component~="' + _componentName + '"]', function( event ) {
         module.publicMethod(); //= Hello World!
     });
 

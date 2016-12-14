@@ -129,6 +129,7 @@
                 // jCreate :)
                 $(document).on('create', '[data-component~="dotdotdot"]', function( e ) {
                     console.log( e.$target.data('dotdotdot') );
+                    console.log( e.options('dotdotdot') );
                     e.$target.dotdotdot( e.options('dotdotdot') );
                 });
 

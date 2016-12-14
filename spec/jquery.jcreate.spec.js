@@ -12,8 +12,8 @@ describe("jCreate", function() {
         $container = $('#container');
 
         // add 'create' event to container.
-        $container.on('create', '> div', function() {
-            $(this).css( style_red );
+        $container.on('create', '> div', function( e ) {
+            e.$target.css( style_red );
         });
     });
 
@@ -80,8 +80,8 @@ describe("jCreate", function() {
     it("should execute the callback when elements are created inside other elements.", function()
     {
         // given
-        $container.on('create', 'div.inner', function() {
-            $(this).css( style_green );
+        $container.on('create', 'div.inner', function( e ) {
+            e.$target.css( style_green );
         });
 
         var element = '<span><div class="inner"></div></span>';
@@ -105,9 +105,9 @@ describe("jCreate", function() {
             $container.append( $('<a class="pippo">') );
 
             var counter = 0;
-            $(document).on('create', 'a.pippo', function() {
+            $(document).on('create', 'a.pippo', function( e ) {
                 counter++;
-                $(this).css( style_red );
+                e.$target.css( style_red );
             });
 
             // given
@@ -128,8 +128,8 @@ describe("jCreate", function() {
         it("should execute the callback when elements are created inside other elements.", function()
         {
             // given
-            $(document).on('create', 'div.inner', function() {
-                $(this).css( style_green );
+            $(document).on('create', 'div.inner', function( e ) {
+                e.$target.css( style_green );
             });
 
             var element = '<span><div class="inner"></div></span>';
@@ -150,7 +150,7 @@ describe("jCreate", function() {
         {
             counter = 0;
 
-            $container.on('create', '> div', function() {
+            $container.on('create', '> div', function( e ) {
                 counter++;
             });
         });
@@ -163,7 +163,7 @@ describe("jCreate", function() {
             // when
             $container.append( $('<div>') );
 
-            $container.on('create', '> div', function() {
+            $container.on('create', '> div', function( e ) {
                 _inner_counter++;
             });
 
@@ -252,6 +252,94 @@ describe("jCreate", function() {
             // then
             expect( counter ).toBe(1);
             expect( $container.find('> div') ).toHaveCss( style_red );
+        });
+    });
+
+    describe("$.event.special.create.utility", function()
+    {
+        it(".firstLetterToLowerCase()", function() {
+            expect( $.event.special.create.utility.firstLetterToLowerCase('marcomontalbano') ).toEqual('marcomontalbano');
+            expect( $.event.special.create.utility.firstLetterToLowerCase('marcoMontalbano') ).toEqual('marcoMontalbano');
+            expect( $.event.special.create.utility.firstLetterToLowerCase('MarcoMontalbano') ).toEqual('marcoMontalbano');
+        });
+
+        it(".firstLetterToUpperCase()", function() {
+            expect( $.event.special.create.utility.firstLetterToUpperCase('marcomontalbano') ).toEqual('Marcomontalbano');
+            expect( $.event.special.create.utility.firstLetterToUpperCase('marcoMontalbano') ).toEqual('MarcoMontalbano');
+            expect( $.event.special.create.utility.firstLetterToUpperCase('MarcoMontalbano') ).toEqual('MarcoMontalbano');
+        });
+
+        it(".camelize()", function() {
+            expect( $.event.special.create.utility.camelize('marco-montalbano') ).toEqual('marcoMontalbano');
+            expect( $.event.special.create.utility.camelize('marco_montalbano') ).toEqual('marcoMontalbano');
+            expect( $.event.special.create.utility.camelize('marco.montalbano') ).toEqual('marcoMontalbano');
+            expect( $.event.special.create.utility.camelize('marcoMontalbano') ).toEqual('marcomontalbano');
+        });
+
+        it(".filterDataByKey()", function() {
+            expect( $.event.special.create.utility.filterDataByKey({width: 10, productKey:1, productName:'Android'}, 'product') ).toEqual({key:1, name:'Android'});
+            expect( $.event.special.create.utility.filterDataByKey('this is a string!', 'product') ).toEqual('this is a string!');
+        });
+    });
+
+    describe("Event", function()
+    {
+        var callback, $element;
+
+        beforeEach(function ()
+        {
+            // given
+            callback = jasmine.createSpy('callback');
+            $element = $('<div data-component="hello-world">');
+
+            // TEST-FIX for jQuery < 3.0 - https://jquery.com/upgrade-guide/3.0/#breaking-change-deprecated-context-and-selector-properties-removed
+            if ( parseInt(/^[\d]+/.exec( $().jquery )[0]) < 3 ) {
+                $element.context = $element.get(0);
+            }
+
+            // when
+            $container.on('create', '> div', callback);
+            $container.append( $element );
+        });
+
+        it("should contain 'type'", function()
+        {
+            // then
+            expect( callback ).toHaveBeenCalledWith(jasmine.objectContaining({
+                type: "create"
+            }));
+        });
+
+        it("should contain 'timeStamp'", function()
+        {
+            // then
+            expect( callback ).toHaveBeenCalledWith(jasmine.objectContaining({
+                timeStamp: jasmine.any(Number)
+            }));
+        });
+
+        it("should contain 'target'", function()
+        {
+            // then
+            expect( callback ).toHaveBeenCalledWith(jasmine.objectContaining({
+                target: $element.get(0)
+            }));
+        });
+
+        it("should contain '$target'", function()
+        {
+            // then
+            expect( callback ).toHaveBeenCalledWith(jasmine.objectContaining({
+                $target: $element
+            }));
+        });
+
+        it("should contain 'options'", function()
+        {
+            // then
+            expect( callback ).toHaveBeenCalledWith(jasmine.objectContaining({
+                options: jasmine.any(Function)
+            }));
         });
     });
 

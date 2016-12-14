@@ -16,14 +16,14 @@
 (function($, domManip, append, prepend, before, after, html, replaceWith)
 {
     var   _createList = []
-        , _utils      = {}
+        , _utility      = {}
     ;
 
     /**
      * Recursively transform key strings to camel-case.
      * @param {string} str
      */
-    _utils.camelize = function( str ) {
+    _utility.camelize = function( str ) {
         return str.toLowerCase().replace(/[-_\.]+(.)/g, function(match, group) {
             return group.toUpperCase();
         });
@@ -33,7 +33,7 @@
      * Returns the first letter in lowercase.
      * @param {string} str
      */
-    _utils.firstLetterToLowerCase = function( str ) {
+    _utility.firstLetterToLowerCase = function( str ) {
         return str.charAt(0).toLowerCase() + str.slice(1);
     };
 
@@ -41,11 +41,11 @@
      * Returns the first letter in uppercase.
      * @param {string} str
      */
-    _utils.firstLetterToUpperCase = function( str ) {
+    _utility.firstLetterToUpperCase = function( str ) {
         return str.charAt(0).toUpperCase() + str.slice(1);
     };
 
-    _utils.filterDataByKey = function( data, key )
+    _utility.filterDataByKey = function( data, key )
     {
         var   _data   = {}
             , regexp  = new RegExp('^' + key + '([A-Za-z0-9]+)$')
@@ -63,7 +63,7 @@
                 matches = data_key.match( regexp );
 
                 if ( matches ) {
-                    _data[ _utils.firstLetterToLowerCase( matches[1] ) ] = data[ data_key ];
+                    _data[ _utility.firstLetterToLowerCase( matches[1] ) ] = data[ data_key ];
                 }
             }
         }
@@ -88,13 +88,13 @@
             {
                 data.push( _createItem.id );
                 $this.data(data_key, data.join(data_sep));
-                _createItem.handleObj.handler.apply( this, [{
-                    target  : this,
-                    $target : $this,
-                    options : function( key ) {
-                        return _utils.filterDataByKey( $this.data(), _utils.camelize(key) );
+                _createItem.handleObj.handler.apply( this, [new $.Event('create', {
+                    target    : this,
+                    $target   : $this,
+                    options   : function( key ) {
+                        return _utility.filterDataByKey( $this.data(), _utility.camelize(key) );
                     }
-                }] );
+                })] );
             }
         });
     };
@@ -259,10 +259,10 @@
         },
 
         /**
-         * utils: object
+         * utility: object
          *  Collection of utilities.
          */
-        utils: _utils,
+        utility: _utility,
 
         /**
          * version: string
