@@ -79,7 +79,32 @@ The Module Pattern
 >
 > [Learning JavaScript Design Patterns - Addy Osmani]
 
-Following a simple example on how to use the Module pattern with jCreate.
+```javascript
+var myModule = (function () {
+
+    var   module           = {}
+        , _privateVariable = 'Hello World'
+    ;
+
+    var _privateMethod = function() {
+        // ...
+    };
+
+    module.publicProperty = 'Foobar';
+    module.publicMethod = function () {
+        console.log( _privateVariable );
+    };
+
+    return module;
+
+}());
+```
+
+Here follows a simple example on how to use the Module pattern with jCreate.
+
+```html
+<div data-component="hello-world" data-hello-world-name="Marco"></div>
+```
 
 ```javascript
 var helloWorldComponent = (function () {
@@ -88,22 +113,19 @@ var helloWorldComponent = (function () {
         , _componentName = 'hello-world'
     ;
 
-    var _privateMethod = function() {
-        // ...
-    }
-
-    module.publicMethod = function() {
-        console.log( _privateVariable );
+    module.greeting = function( name ) {
+        console.log( 'Hello ' + name + '!' );
     };
 
     $(document).on('create', '[data-component~="' + _componentName + '"]', function( event ) {
-        module.publicMethod(); //= Hello World!
+        var options = event.options( _componentName ); //= {name="Marco"}
+        module.greeting( options.name );               //= Hello Marco!
     });
 
     return module;
-})();
+}());
 
-helloWorldComponent.publicMethod(); //= Hello World!
+helloWorldComponent.greeting('Marco'); //= Hello Marco!
 ```
 
 

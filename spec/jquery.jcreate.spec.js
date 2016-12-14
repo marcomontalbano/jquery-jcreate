@@ -11,6 +11,8 @@ describe("jCreate", function() {
         loadFixtures('container.html');
         $container = $('#container');
 
+        spyOn(console, 'log');
+
         // add 'create' event to container.
         $container.on('create', '> div', function( e ) {
             e.$target.css( style_red );
@@ -302,7 +304,7 @@ describe("jCreate", function() {
             $container.append( $element );
         });
 
-        it("should contain 'type'", function()
+        it("should contain 'type'.", function()
         {
             // then
             expect( callback ).toHaveBeenCalledWith(jasmine.objectContaining({
@@ -310,7 +312,7 @@ describe("jCreate", function() {
             }));
         });
 
-        it("should contain 'timeStamp'", function()
+        it("should contain 'timeStamp'.", function()
         {
             // then
             expect( callback ).toHaveBeenCalledWith(jasmine.objectContaining({
@@ -318,7 +320,7 @@ describe("jCreate", function() {
             }));
         });
 
-        it("should contain 'target'", function()
+        it("should contain 'target'.", function()
         {
             // then
             expect( callback ).toHaveBeenCalledWith(jasmine.objectContaining({
@@ -326,7 +328,7 @@ describe("jCreate", function() {
             }));
         });
 
-        it("should contain '$target'", function()
+        it("should contain '$target'.", function()
         {
             // then
             expect( callback ).toHaveBeenCalledWith(jasmine.objectContaining({
@@ -334,7 +336,7 @@ describe("jCreate", function() {
             }));
         });
 
-        it("should contain 'options'", function()
+        it("should contain 'options'.", function()
         {
             // then
             expect( callback ).toHaveBeenCalledWith(jasmine.objectContaining({
