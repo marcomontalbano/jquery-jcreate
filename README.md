@@ -34,8 +34,8 @@ jCreate works with the [jQuery Event Delegation].
 
 ```js
 // bind 'create' event.
-$( '#dataTable tbody' ).on( 'create', 'tr', function( e ) {
-    console.log( e.$target.text() );
+$( '#dataTable tbody' ).on( 'create', 'tr', function( event ) {
+    console.log( event.$target.text() );
 });
 
 // add a new 'row'.
