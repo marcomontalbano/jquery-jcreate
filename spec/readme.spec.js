@@ -41,8 +41,8 @@ describe("README.md", function() {
         myModule.publicMethod();
 
         // then
-        expect( myModule._privateVariable ).toBe(undefined);
-        expect( myModule._privateMethod ).toBe(undefined);
+        expect( myModule._privateVariable ).toBeUndefined();
+        expect( myModule._privateMethod ).toBeUndefined();
         expect( myModule.publicProperty ).toEqual( 'Foobar' );
         expect( console.log ).toHaveBeenCalledWith( 'Hello World' );
     });
