@@ -35,7 +35,7 @@ jCreate works with the [jQuery Event Delegation].
 ```js
 // bind 'create' event.
 $( '#dataTable tbody' ).on( 'create', 'tr', function( event ) {
-    console.log( event.$target.text() );
+    console.log( event.$currentTarget.text() );
 });
 
 // add a new 'row'.
@@ -142,7 +142,7 @@ var helloWorldComponent = (function () {
     };
 
     $(document).on('create', '[data-component~="' + _componentName + '"]', function( event ) {
-        var options = event.options( _componentName ); //= {name="Marco"}
+        var options = event.options( _componentName ); //= {name:"Marco"}
         module.greeting( options.name );               //= Hello Marco!
     });
 
