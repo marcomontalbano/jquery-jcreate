@@ -270,7 +270,7 @@
          * version: string
          *  Version number.
          */
-        version: '1.1.0-alpha'
+        version: '1.1.0'
     };
 
 
