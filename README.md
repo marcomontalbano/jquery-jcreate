@@ -5,7 +5,7 @@
 jCreate
 =======
 
-jCreate is a plugin for jQuery that adds a new bindable event.
+jCreate is a plugin for jQuery that adds a new bindable event. Did you ever look for something like `$(document).on("create", function() { ... });`?
 
 Now you can do something cool when one or more elements are created and are available on the page.
 
@@ -92,6 +92,8 @@ $( document ).on('create', 'div', function( event ) {
 ```
 
 ### jQuery Support
+
+> jquery >= 1.8
 
 Since I use the last version of `jasmine-jquery` library in order to test my own plugin, I cannot ensure that the plugin works with jQuery 1.7 and below, due to the fact that `jasmine-jquery` uses methods that were introduced in jQuery 1.8.
 
