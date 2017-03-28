@@ -158,7 +158,7 @@ helloWorldComponent.greeting('Marco'); //= Hello Marco!
 Development
 -----------
 
-### Install Grunt and Bower
+### Install Grunt and Bower
 
 To install Grunt and Bower, you must first download and install [node.js] - which includes npm.
 
