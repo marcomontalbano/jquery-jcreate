@@ -190,7 +190,7 @@ bower install
 [Bower]: <http://bower.io/>
 [jQuery Event Delegation]: <http://api.jquery.com/on/#direct-and-delegated-events>
 [node.js]: <https://nodejs.org/>
-[CodePen]: <http://codepen.io/marcomontalbano/details/pEjWgW>
+[CodePen]: <https://codepen.io/collection/AQGNYy/>
 [download and install node.js]: <https://nodejs.org/>
 
 [Learning JavaScript Design Patterns - Addy Osmani]: <https://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript>
