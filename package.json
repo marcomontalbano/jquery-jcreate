@@ -24,7 +24,11 @@
         "event"
     ],
     "scripts": {
-        "test": "grunt test"
+        "test": "grunt test",
+        "build": "grunt build"
+    },
+    "dependencies": {
+        "jquery" : ">=1.8"
     },
     "devDependencies" : {
         "grunt"                 : "^1.0.1"  ,
