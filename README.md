@@ -1,9 +1,10 @@
 jCreate
 =======
 
-[![Bower](https://badge.fury.io/bo/jquery-jcreate.svg)](https://github.com/marcomontalbano/jquery-jcreate/releases/latest)
-[![Build Status](https://travis-ci.org/marcomontalbano/jquery-jcreate.svg?branch=master)](https://travis-ci.org/marcomontalbano/jquery-jcreate)
 [![Codacy](https://api.codacy.com/project/badge/Grade/16809335d05c4b82b5e656de74875ea9)](https://www.codacy.com/app/marcomontalbano/jquery-jcreate)
+[![Build Status](https://travis-ci.org/marcomontalbano/jquery-jcreate.svg?branch=master)](https://travis-ci.org/marcomontalbano/jquery-jcreate)
+[![Bower](https://badge.fury.io/js/jquery-jcreate.svg)](https://www.npmjs.com/package/jquery-jcreate)
+[![Bower](https://badge.fury.io/bo/jquery-jcreate.svg)](https://github.com/marcomontalbano/jquery-jcreate/releases/latest)
 
 jCreate is a plugin for jQuery that adds a new bindable event. Did you ever look for something like `$(document).on("create", function() { ... });`?
 
