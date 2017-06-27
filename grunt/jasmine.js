@@ -7,12 +7,12 @@ module.exports = function (grunt, options) {
             // Non-source, non-spec helper files.
             // In the default runner these are loaded after vendor files
             helpers : [
-                '<%= files.helper %>'
+                '<%= files.helpers %>'
             ],
 
             // Your Jasmine specs.
             specs : [
-                '<%= files.spec %>'
+                '<%= files.specs %>'
             ],
 
             junit : {
@@ -29,7 +29,7 @@ module.exports = function (grunt, options) {
         },
 
         // // Your source files.
-        //src : '<%= files.src %>',
+        //src : '<%= files.srcs %>',
     };
 
 
@@ -46,7 +46,7 @@ module.exports = function (grunt, options) {
                 _exports[ _jquery_version ] = {
 
                     // Your source files.
-                    src: '<%= files.src %>',
+                    src: '<%= files.srcs %>',
 
                     options: {
 

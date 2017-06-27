@@ -1,9 +1,9 @@
+jCreate
+=======
+
 [![Bower](https://badge.fury.io/bo/jquery-jcreate.svg)](https://github.com/marcomontalbano/jquery-jcreate/releases/latest)
 [![Build Status](https://travis-ci.org/marcomontalbano/jquery-jcreate.svg?branch=master)](https://travis-ci.org/marcomontalbano/jquery-jcreate)
 [![Codacy](https://api.codacy.com/project/badge/Grade/16809335d05c4b82b5e656de74875ea9)](https://www.codacy.com/app/marcomontalbano/jquery-jcreate)
-
-jCreate
-=======
 
 jCreate is a plugin for jQuery that adds a new bindable event. Did you ever look for something like `$(document).on("create", function() { ... });`?
 
@@ -12,8 +12,10 @@ Now you can do something cool when one or more elements are created and are avai
 See it in action with [CodePen].
 
 
-Install with Bower
-------------------
+Install
+-------
+
+### Bower
 
 You can install jCreate using [Bower]:
 
@@ -23,8 +25,42 @@ bower install --save jquery-jcreate
 
 And now you can include it in you project with a `<script>` tag.
 
-```sh
+```html
 <script type="text/javascript" src="jquery.jcreate.min.js"></script>
+```
+
+### Yarn and npm
+
+You can install jCreate using [Yarn] or [npm]:
+
+```sh
+# yarn
+yarn add jquery-jcreate
+
+# npm
+npm install --save jquery-jcreate
+```
+
+#### Webpack 2
+
+```js
+import $ from 'jquery';
+import 'jquery-jcreate';
+
+$(document).on('create', '*', function(event) {
+    console.log( 'created tag: ', event.$currentTarget.prop('tagName') );
+});
+```
+
+#### RequireJS
+
+```js
+define(["jquery", "jquery-jcreate"], function( $ ) {
+
+    $(document).on('create', '*', function(event) {
+        console.log( 'created tag: ', event.$currentTarget.prop('tagName') );
+    });
+});
 ```
 
 How to use
@@ -198,3 +234,6 @@ bower install
 [JSHint]:   <https://www.npmjs.com/package/grunt-contrib-jshint>
 [jasmine]:  <https://www.npmjs.com/package/grunt-contrib-jasmine>
 [UglifyJS]: <https://www.npmjs.com/package/grunt-contrib-uglify>
+
+[npm]: <https://www.npmjs.com/>
+[Yarn]: <https://yarnpkg.com/lang/en/>

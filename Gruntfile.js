@@ -4,9 +4,14 @@ module.exports = function(grunt)
 
         //
         files : {
-            src    : 'src/**/*.js',
-            spec   : 'spec/**/*.spec.js',
-            helper : 'spec/helpers/**/*.helper.js',
+            srcs    : 'src/**/*.js',
+            specs   : 'spec/**/*.spec.js',
+            helpers : 'spec/helpers/**/*.helper.js',
+
+            src          : 'src/<%= package.filename %>.js',
+            dist         : 'dist/<%= package.filename %>.js',
+            dist_min     : 'dist/<%= package.filename %>.min.js',
+            dist_umd     : 'dist/<%= package.filename %>.umd.js',
         },
 
         //

@@ -10,7 +10,7 @@ module.exports = {
                   + ' */\n'
           },
         files: {
-            'dist/<%= package.filename %>.min.js': [ '<%= files.src %>' ]
+            '<%= files.dist_min %>': [ '<%= files.srcs %>' ]
         },
     },
 };

@@ -6,4 +6,5 @@ build:
     - 'test'
     - 'uglify:all'
     - 'copy:src'
+    - 'umd'
     - 'string-replace:version'

@@ -1,9 +1,9 @@
 module.exports = {
     scripts: {
         files: [
-            '<%= files.spec %>'   ,
-            '<%= files.src %>'    ,
-            '<%= files.helper %>' ,
+            '<%= files.specs %>'   ,
+            '<%= files.srcs %>'    ,
+            '<%= files.helpers %>' ,
         ],
         tasks: ['build'],
         options: {

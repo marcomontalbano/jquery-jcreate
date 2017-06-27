@@ -3,8 +3,9 @@ module.exports = {
         files: [{
             expand: true,
             cwd: 'src/',
-            src: ['**'],
-            dest: 'dist/'
+            src: ['<%= package.filename %>.js'],
+            dest: 'dist/',
+            filter: 'isFile'
         }],
         verbose: true
     }

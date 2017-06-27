@@ -7,7 +7,7 @@ module.exports = {
     },
     source : {
         files : {
-            src: [ '<%= files.spec %>', '<%= files.src %>' ],
+            src: [ '<%= files.specs %>', '<%= files.srcs %>' ],
         },
     },
 };
