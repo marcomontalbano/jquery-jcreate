@@ -29,7 +29,7 @@ And now you can include it in you project with a `<script>` tag.
 <script type="text/javascript" src="jquery.jcreate.min.js"></script>
 ```
 
-### Yarn and npm
+### Yarn and npm
 
 You can install jCreate using [Yarn] or [npm]:
 
