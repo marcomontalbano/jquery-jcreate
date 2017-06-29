@@ -7,7 +7,7 @@ describe("README.md", function() {
         loadFixtures('container.html');
         $container = $('#container');
 
-        spyOn(console, 'log');
+        spyOn(console, 'info');
     });
 
     afterEach(function () {
@@ -30,7 +30,7 @@ describe("README.md", function() {
 
             module.publicProperty = "Foobar";
             module.publicMethod = function () {
-                console.log( _privateVariable );
+                console.info( _privateVariable );
             };
 
             return module;
@@ -44,7 +44,7 @@ describe("README.md", function() {
         expect( myModule._privateVariable ).toBeUndefined();
         expect( myModule._privateMethod ).toBeUndefined();
         expect( myModule.publicProperty ).toEqual( 'Foobar' );
-        expect( console.log ).toHaveBeenCalledWith( 'Hello World' );
+        expect( console.info ).toHaveBeenCalledWith( 'Hello World' );
     });
 
     it("'The Module Pattern with jCreate' example should be true.", function ()
@@ -57,7 +57,7 @@ describe("README.md", function() {
             ;
 
             module.greeting = function( name ) {
-                console.log( 'Hello ' + name + '!' );
+                console.info( 'Hello ' + name + '!' );
             };
 
             $(document).on('create', '[data-component~="' + _componentName + '"]', function( event ) {
@@ -73,8 +73,8 @@ describe("README.md", function() {
         $container.append('<div data-component="hello-world" data-hello-world-name="Marco"></div>');
 
         // then
-        expect( console.log ).toHaveBeenCalledWith( 'Hello Stefania!' );
-        expect( console.log ).toHaveBeenCalledWith( 'Hello Marco!' );
+        expect( console.info ).toHaveBeenCalledWith( 'Hello Stefania!' );
+        expect( console.info ).toHaveBeenCalledWith( 'Hello Marco!' );
     });
 
 });

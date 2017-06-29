@@ -1,14 +1,26 @@
 module.exports = {
-    all: {
+    options: {
+        banner: ''
+              + '/**\n'
+              + ' * <%= package.filename %>.js v<%= package.version %>\n'
+              + ' * <%= package.author.name %> © 2011-<%= grunt.template.today("yyyy") %> - <%= package.author.url %>\n'
+              + ' * ----------------------------------------------------------\n'
+              + ' */\n'
+    },
+    beautify: {
         options: {
-            sourceMap : true,
-            banner: ''
-                  + '/**\n'
-                  + ' * <%= package.filename %>.js v<%= package.version %> - <%= grunt.template.today("yyyy-mm-dd") %> - <%= package.firstRelease %>\n'
-                  + ' * <%= package.author.name %> - <%= package.author.url %>\n'
-                  + ' * --------------------------------------------------\n'
-                  + ' */\n'
-          },
+            beautify: true,
+            mangle: false,
+            compress: false,
+        },
+        files: {
+            '<%= files.dist %>': [ '<%= files.srcs %>' ]
+        },
+    },
+    minify: {
+        options: {
+            sourceMap: true,
+        },
         files: {
             '<%= files.dist_min %>': [ '<%= files.srcs %>' ]
         },

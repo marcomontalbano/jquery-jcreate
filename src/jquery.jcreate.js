@@ -16,7 +16,7 @@
 (function($, domManip, append, prepend, before, after, html, replaceWith)
 {
     var   _createList = []
-        , _utility      = {}
+        , _utility    = {}
     ;
 
     /**

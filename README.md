@@ -203,26 +203,24 @@ Then, using the command line:
 
 ```sh
 # install `grunt-cli` globally
-npm install -g grunt-cli
+yarn global add grunt-cli
 
 # install `bower` globally
-npm install -g bower
+yarn global add bower
 
 # navigate to the root of your project, then run
-npm install
+yarn install
 bower install
 ```
 
 
-### Available Grunt tasks
+### Available tasks
 
-* `jshint`  Validate files with [JSHint].
-* `jasmine` Run [jasmine] specs headlessly through PhantomJS.
-* `uglify`  Minify files with [UglifyJS].
-* `watch`   Run predefined tasks whenever watched files change.
-* `sync`    Synchronize content of two directories.
-* `test`    Alias for "jshint", "jasmine" tasks.
-* `build`   Alias for "test", "uglify", "sync" tasks.
+* `yarn start`  Start http-server.
+* `yarn test`   Validate files with [JSHint] and run unit tests with [jasmine].
+* `yarn smoke`  Watch for file changes and run smoke test.
+* `yarn build`  Run full test suite and build dist folder.
+
 
 [Bower]: <http://bower.io/>
 [jQuery Event Delegation]: <http://api.jquery.com/on/#direct-and-delegated-events>

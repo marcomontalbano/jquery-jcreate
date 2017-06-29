@@ -22,7 +22,7 @@ module.exports = function (grunt, options) {
 
             // The auto-generated specfile that phantomjs will use to run your tests.
             // Automatically deleted upon normal runs. Use the :build flag to generate a SpecRunner manually e.g. grunt jasmine:myTask:build
-            outfile : 'SpecRunner.html',
+            outfile : 'index.html',
 
             // Prevents the auto-generated specfile used to run your tests from being automatically deleted.
             keepRunner : true,
@@ -40,8 +40,8 @@ module.exports = function (grunt, options) {
             if ( /^jquery-[0-9\.]+$/.test( _jquery_version ) )
             {
                 // Test against jQuery x.x.x
-                //var _jquery_path = _jqueries[ _jquery_version ];
                 var _jquery_path = 'bower_components/' + _jquery_version + '/';
+                var _jquery_file = grunt.file.exists(_jquery_path + 'jquery.js') ? _jquery_path + 'jquery.js' : _jquery_path + 'dist/jquery.js';
 
                 _exports[ _jquery_version ] = {
 
@@ -52,8 +52,7 @@ module.exports = function (grunt, options) {
 
                         // Third party libraries like jQuery & generally anything loaded before source, specs, and helpers.
                         vendor: [
-                            _jquery_path + 'jquery.js',
-                            _jquery_path + 'dist/jquery.js',
+                            _jquery_file,
                             'node_modules/jasmine-jquery/lib/jasmine-jquery.js',
                             'lib/jasmine-jquery-config.js',
                         ],
