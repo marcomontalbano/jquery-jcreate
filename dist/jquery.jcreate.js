@@ -1,5 +1,5 @@
 /**
- * jquery.jcreate.js v1.2.0
+ * jquery.jcreate.js v1.2.1
  * Marco Montalbano © 2011-2017 - https://marcomontalbano.com
  * ----------------------------------------------------------
  */
@@ -92,7 +92,7 @@
         _default: function(event, data) {},
         handle: function(event, data) {},
         utility: _utility,
-        version: "1.2.0"
+        version: "1.2.1"
     };
     $.fn.append = function() {
         return _domManip.apply(append.apply(this, arguments), arguments);
