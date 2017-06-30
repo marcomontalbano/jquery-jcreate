@@ -4,15 +4,15 @@ __MACOSX
 Thumbs.db
 
 # node.js
-.grunt/
+/.grunt
 /node_modules
 /bower_components
-npm-debug.log
-yarn-error.log
+/npm-debug.log
+/yarn-error.log
 
 # jasmine
-SpecRunner.html
-index.html
+/SpecRunner.html
+/index.html
 /output
 
 # others
