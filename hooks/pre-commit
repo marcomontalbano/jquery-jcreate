@@ -1,0 +1,19 @@
+#!/bin/sh
+#
+# An example hook script to verify what is about to be committed.
+# Called by "git commit" with no arguments.  The hook should
+# exit with non-zero status after issuing an appropriate message if
+# it wants to stop the commit.
+#
+# To enable this hook, rename this file to "pre-commit".
+
+# build project
+npm run build
+
+# check if something has changed
+if [[ `git ls-files -mo --exclude-standard dist/` != '' ]]; then
+    echo "\n\033[0;36m""Adding compiled files to commit:""\033[0;0m"
+    git ls-files -mo --exclude-standard dist/
+    git add dist/
+    echo ""
+fi
