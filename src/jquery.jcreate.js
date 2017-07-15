@@ -93,6 +93,7 @@
                     $currentTarget  : $this,
                     delegateTarget  : _createItem.delegateTarget,
                     $delegateTarget : _createItem.$delegateTarget,
+                    data            : _createItem.handleObj.data,
                     options         : function( key ) {
                         return _utility.filterDataByKey( $this.data(), _utility.camelize(key) );
                     }

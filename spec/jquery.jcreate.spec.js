@@ -48,6 +48,20 @@ describe("jCreate", function() {
         expect( $container.find('> div') ).not.toHaveCss(style_red);
     });
 
+    it("should pass data to the handler in event.data when the event is triggered.", function()
+    {
+        // given
+        $container.on('create', 'div', { name: 'Marco' }, function( e ) {
+            console.info('My name is ' + e.data.name);
+        });
+
+        // when
+        $container.append( $('<div>') );
+
+        // then
+        expect( console.info ).toHaveBeenCalledWith( 'My name is Marco' );
+    });
+
     it("shouldn't break if the array object has been extended.", function()
     {
         // given

@@ -1,5 +1,5 @@
 /**
- * jquery.jcreate.js v1.2.1
+ * jquery.jcreate.js v1.2.2
  * Marco Montalbano © 2011-2017 - https://marcomontalbano.com
  * ----------------------------------------------------------
  */
@@ -44,6 +44,7 @@
                     $currentTarget: $this,
                     delegateTarget: _createItem.delegateTarget,
                     $delegateTarget: _createItem.$delegateTarget,
+                    data: _createItem.handleObj.data,
                     options: function(key) {
                         return _utility.filterDataByKey($this.data(), _utility.camelize(key));
                     }
@@ -92,7 +93,7 @@
         _default: function(event, data) {},
         handle: function(event, data) {},
         utility: _utility,
-        version: "1.2.1"
+        version: "1.2.2"
     };
     $.fn.append = function() {
         return _domManip.apply(append.apply(this, arguments), arguments);
