@@ -25,6 +25,10 @@ module.exports = function(grunt)
 
     // 
     require('load-grunt-config')(grunt, {
-        data : data,
+        data: data,
+        loadGruntTasks: {
+            pattern: ['grunt-*', '!grunt-template-jasmine-istanbul']
+        },
     });
 };
+
