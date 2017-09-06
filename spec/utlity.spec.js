@@ -23,4 +23,17 @@ describe('jQuery.event.special.create.utility', function()
         expect( jQuery.event.special.create.utility.filterDataByKey({width: 10, productKey:1, productName:'Android'}, 'product') ).toEqual({key:1, name:'Android'});
         expect( jQuery.event.special.create.utility.filterDataByKey('this is a string!', 'product') ).toEqual('this is a string!');
     });
+
+    it('.filterDataByKey() shouldn\'t break if the array object has been extended.', function()
+    {
+        // given
+        Array.prototype.newCoolFunction  = function() {};
+        Object.prototype.newCoolFunction = function() {};
+
+        // then
+        expect(function() {
+            expect( jQuery.event.special.create.utility.filterDataByKey({width: 10, productKey:1, productName:'Android'}, 'product') ).toEqual({key:1, name:'Android'});
+            expect( jQuery.event.special.create.utility.filterDataByKey('this is a string!', 'product') ).toEqual('this is a string!');
+        }).not.toThrow();
+    });
 });

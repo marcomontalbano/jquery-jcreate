@@ -197,13 +197,10 @@
         {
             for (var _createList_key in _createList)
             {
-                if ( _createList.hasOwnProperty( _createList_key ) )
+                if( _createList.hasOwnProperty( _createList_key ) && $(this).is( _createList[_createList_key].$delegateTarget ) && _createList[_createList_key].handleObj.selector === handleObj.selector )
                 {
-                    if( $(this).is( _createList[_createList_key].$delegateTarget ) && _createList[_createList_key].handleObj.selector === handleObj.selector )
-                    {
-                        delete _createList[_createList_key];
-                        break;
-                    }
+                    delete _createList[_createList_key];
+                    break;
                 }
             }
         },
