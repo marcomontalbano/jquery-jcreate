@@ -140,10 +140,10 @@
          *  This would be appropriate, for example, if the event was never fired by the browser but invoked by .trigger().
          *  To attach the jQuery event handler in the setup hook, use the eventHandle argument.
          */
-        setup: function( data, namespaces, eventHandle )
-        {
-
-        },
+        //setup: function( data, namespaces, eventHandle )
+        //{
+        //    
+        //},
 
         /**
          * teardown: function()
@@ -157,10 +157,10 @@
          *  jQuery will generally remove the data and events when an element is totally removed from the document,
          *  but failing to remove data or events on teardown will cause a memory leak if the element stays in the document.
          */
-        teardown: function()
-        {
-
-        },
+        //teardown: function()
+        //{
+        //    
+        //},
 
         /**
          * add: function( handleObj )
@@ -223,10 +223,10 @@
          *  Otherwise, it performs the normal trigger processing, calling any event handlers for the element and bubbling
          *  the event (unless propagation is stopped in advance or noBubble was specified for the special event) to call event handlers attached to parent elements.
          */
-        trigger: function( event, data )
-        {
-
-        },
+        //trigger: function( event, data )
+        //{
+        //    
+        //},
 
         /**
          * _default: function( event: jQuery.Event, data: Object )
@@ -236,10 +236,10 @@
          *  When a _default hook is specified, the hook is called just prior to checking for and executing the element's default method.
          *  If this hook returns the value false the element's default method will be called; otherwise it is not.
          */
-        _default: function( event, data )
-        {
-
-        },
+        //_default: function( event, data )
+        //{
+        //    
+        //},
 
         /**
          * handle: function( event: jQuery.Event, data: Object )
@@ -256,10 +256,10 @@
          *  when the type is mapped using bindType and delegateType. For that reason, it is almost always an error to have anything other
          *  than a handle hook present if the special event defines a bindType and delegateType, since those other hooks will never be called.
          */
-        handle: function( event, data )
-        {
-
-        },
+        //handle: function( event, data )
+        //{
+        //    
+        //},
 
         /**
          * utility: object

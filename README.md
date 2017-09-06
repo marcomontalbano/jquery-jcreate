@@ -153,12 +153,12 @@ var myModule = (function () {
     ;
 
     var _privateMethod = function() {
-        // ...
+        return _privateVariable;
     };
 
     module.publicProperty = 'Foobar';
     module.publicMethod = function () {
-        console.log( _privateVariable );
+        console.log( _privateMethod() );
     };
 
     return module;

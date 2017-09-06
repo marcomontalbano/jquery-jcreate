@@ -1,0 +1,18 @@
+{
+    "extends": "../.jshintrc",
+    "globals": {
+        "jasmine": true,
+        "xdescribe": true,
+        "describe": true,
+        "it": true,
+        "xit": true,
+        "expect": true,
+        "before": true,
+        "beforeEach": true,
+        "after": true,
+        "afterEach": true,
+        "loadFixtures": true,
+        "spyOn": true,
+        "console": true
+    }
+}

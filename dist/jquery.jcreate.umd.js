@@ -81,8 +81,6 @@
         return this;
     };
     $.event.special.create = {
-        setup: function(data, namespaces, eventHandle) {},
-        teardown: function() {},
         add: function(handleObj) {
             var $this = $(this);
             var _createItem = {
@@ -105,9 +103,6 @@
                 }
             }
         },
-        trigger: function(event, data) {},
-        _default: function(event, data) {},
-        handle: function(event, data) {},
         utility: _utility,
         version: "1.2.2"
     };

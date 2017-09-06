@@ -1,0 +1,19 @@
+{
+    "esversion": 3,
+    "laxcomma": true, 
+    "loopfunc": true,
+
+    "-W032": true,
+
+    "eqnull": true,
+    "laxbreak": true,
+    "laxcomma": true,
+    "proto": true,
+    "undef": true,
+    "unused": true,
+    "quotmark": "single",
+    "globals": {
+        "jQuery": true,
+        "document": true
+    }
+}
