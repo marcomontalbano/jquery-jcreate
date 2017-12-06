@@ -17,20 +17,6 @@ See it in action with [CodePen].
 Install
 -------
 
-### Bower
-
-You can install jCreate using [Bower]:
-
-```sh
-bower install --save jquery-jcreate
-```
-
-And now you can include it in you project with a `<script>` tag.
-
-```html
-<script type="text/javascript" src="jquery.jcreate.min.js"></script>
-```
-
 ### Yarn and npm
 
 [![NPM](https://nodei.co/npm/jquery-jcreate.png)](https://nodei.co/npm/jquery-jcreate/)
@@ -65,6 +51,30 @@ define(["jquery", "jquery-jcreate"], function( $ ) {
         console.log( 'created tag: ', event.$currentTarget.prop('tagName') );
     });
 });
+```
+
+### Bower
+
+You can install jCreate using [Bower]:
+
+```sh
+bower install --save jquery-jcreate
+```
+
+And now you can include it in you project with a `<script>` tag.
+
+```html
+<script type="text/javascript" src="jquery.jcreate.min.js"></script>
+```
+
+### `<script>` tag using CDNs
+
+[jsDelivr] is a global CDN delivery for JavaScript libraries.
+
+To include the latest releases and all upcoming features and patches, use this:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/jquery-jcreate@1/dist/jquery.jcreate.min.js"></script>
 ```
 
 How to use
@@ -226,6 +236,7 @@ bower install
 
 
 [Bower]: <http://bower.io/>
+[jsDelivr]: <https://www.jsdelivr.com/about>
 [jQuery Event Delegation]: <http://api.jquery.com/on/#direct-and-delegated-events>
 [node.js]: <https://nodejs.org/>
 [CodePen]: <https://codepen.io/collection/AQGNYy/>
