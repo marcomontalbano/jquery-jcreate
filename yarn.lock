@@ -419,12 +419,12 @@ ecc-jsbn@~0.1.1:
   dependencies:
     jsbn "~0.1.0"
 
-ecstatic@^2.0.0:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/ecstatic/-/ecstatic-2.2.1.tgz#b5087fad439dd9dd49d31e18131454817fe87769"
+ecstatic@^3.0.0:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/ecstatic/-/ecstatic-3.1.1.tgz#2564aa9dde84179dcaf926a9e6d12df13a0b666d"
   dependencies:
     he "^1.1.1"
-    mime "^1.2.11"
+    mime "^1.4.1"
     minimist "^1.1.0"
     url-join "^2.0.2"
 
@@ -761,12 +761,12 @@ grunt-template-jasmine-istanbul@^0.5.0:
     istanbul "^0.4.3"
     lodash.template "^4.2.5"
 
-grunt-umd@^2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/grunt-umd/-/grunt-umd-2.4.0.tgz#d1318c645ba4734c10c20c1dd6923467d81b05ef"
+grunt-umd@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/grunt-umd/-/grunt-umd-3.0.0.tgz#3526e771b062b89c6cd6dcfc62b3e1f71a0d7370"
   dependencies:
-    libumd "^0.7.0"
-    xtend "^4.0.0"
+    libumd "^0.9.0"
+    xtend "^4.0.1"
 
 grunt@^1.0.1:
   version "1.0.1"
@@ -887,13 +887,13 @@ http-proxy@^1.8.1:
     eventemitter3 "1.x.x"
     requires-port "1.x.x"
 
-http-server@^0.10.0:
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/http-server/-/http-server-0.10.0.tgz#b2a446b16a9db87ed3c622ba9beb1b085b1234a7"
+http-server@^0.11.1:
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/http-server/-/http-server-0.11.1.tgz#2302a56a6ffef7f9abea0147d838a5e9b6b6a79b"
   dependencies:
     colors "1.0.3"
     corser "~2.0.0"
-    ecstatic "^2.0.0"
+    ecstatic "^3.0.0"
     http-proxy "^1.8.1"
     opener "~1.4.0"
     optimist "0.6.x"
@@ -1113,9 +1113,9 @@ levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
-libumd@^0.7.0:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/libumd/-/libumd-0.7.0.tgz#f43efae6ad984ce4928c1f356f519d12ec8f9b76"
+libumd@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/libumd/-/libumd-0.9.0.tgz#393451f27524d92a68a9df2d4a4303294d561ad8"
   dependencies:
     alphabet "^1.0.0"
     annois "^0.3.2"
@@ -1246,7 +1246,7 @@ mime-types@^2.1.12, mime-types@~2.1.15, mime-types@~2.1.17:
   dependencies:
     mime-db "~1.30.0"
 
-mime@^1.2.11:
+mime@^1.4.1:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/mime/-/mime-1.6.0.tgz#32cd9e5c64553bd58d19a568af452acff04981b1"
 
@@ -1961,7 +1961,7 @@ wrappy@1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
 
-xtend@^4.0.0:
+xtend@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/xtend/-/xtend-4.0.1.tgz#a5c6d532be656e23db820efb943a1f04998d63af"
 
