@@ -15,8 +15,8 @@
 }(this, function (jquery) {
 
 /**
- * jquery.jcreate.js v1.2.3
- * Marco Montalbano © 2011-2017 - https://marcomontalbano.com
+ * jquery.jcreate.js v1.2.4
+ * Marco Montalbano © 2011-2018 - https://marcomontalbano.com
  * ----------------------------------------------------------
  */
 
@@ -102,7 +102,7 @@
             }
         },
         utility: _utility,
-        version: "1.2.3"
+        version: "1.2.4"
     };
     $.fn.append = function() {
         return _domManip.apply(append.apply(this, arguments), arguments);
