@@ -2,12 +2,12 @@ language: node_js
 node_js:
   - "6"
 before_script:
-  - yarn global add grunt-cli
-  - yarn global add bower
+  - npm install -g grunt-cli
+  - npm install -g bower
   - bower install
 script:
-  - yarn test
+  - npm test
 after_success:
-  - yarn add coveralls codacy-coverage
+  - npm install coveralls codacy-coverage
   - cat ./coverage/reports/lcov.info | ./node_modules/.bin/coveralls || true
   - cat ./coverage/reports/lcov.info | ./node_modules/.bin/codacy-coverage || true
