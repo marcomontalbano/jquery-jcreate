@@ -1,5 +1,5 @@
 /**
- * jquery.jcreate.js v1.2.4
+ * jquery.jcreate.js v1.2.5
  * Marco Montalbano © 2011-2019 - https://marcomontalbano.com
  * ----------------------------------------------------------
  */
@@ -86,7 +86,7 @@
             }
         },
         utility: _utility,
-        version: "1.2.4"
+        version: "1.2.5"
     };
     $.fn.append = function() {
         return _domManip.apply(append.apply(this, arguments), arguments);
