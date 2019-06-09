@@ -215,23 +215,23 @@ Then, using the command line:
 
 ```sh
 # install `grunt-cli` globally
-yarn global add grunt-cli
+npm install -g grunt-cli
 
 # install `bower` globally
-yarn global add bower
+npm install -g bower
 
 # navigate to the root of your project, then run
-yarn install
+npm install
 bower install
 ```
 
 
 ### Available tasks
 
-* `yarn start`  Start http-server.
-* `yarn test`   Validate files with [JSHint] and run unit tests with [jasmine].
-* `yarn smoke`  Watch for file changes and run smoke test.
-* `yarn build`  Run full test suite and build dist folder.
+* `npm start`  Start http server.
+* `npm run test`   Validate files with [JSHint] and run unit tests with [jasmine].
+* `npm run smoke`  Watch for file changes and run smoke test.
+* `npm run build`  Run full test suite and build dist folder.
 
 
 [Bower]: <http://bower.io/>

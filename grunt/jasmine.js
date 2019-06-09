@@ -22,7 +22,7 @@ module.exports = function (grunt, options) {
 
             // The auto-generated specfile that phantomjs will use to run your tests.
             // Automatically deleted upon normal runs. Use the :build flag to generate a SpecRunner manually e.g. grunt jasmine:myTask:build
-            outfile : 'index.html',
+            outfile : 'jasmine.html',
 
             // Prevents the auto-generated specfile used to run your tests from being automatically deleted.
             keepRunner : true,
