@@ -2,7 +2,7 @@
   "name": "jquery-jcreate",
   "filename": "jquery.jcreate",
   "firstRelease": "2011-11-18",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "description": "jCreate is a new special event for jQuery. Just use .on('create', ..); the callback will be triggered when elements are created on the page.",
   "main": "dist/jquery.jcreate.umd.js",
   "author": {
@@ -45,7 +45,7 @@
     "grunt-umd": "^3.0.0",
     "jasmine-jquery": "^2.1.1",
     "load-grunt-config": "^1.0.2",
-    "serve": "~11.0.1",
+    "serve": "~11.1.0",
     "shared-git-hooks": "^1.2.1",
     "time-grunt": "^2.0.0"
   }
