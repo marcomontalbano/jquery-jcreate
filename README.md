@@ -1,5 +1,4 @@
-jCreate
-=======
+# jCreate
 
 [![Codacy](https://api.codacy.com/project/badge/Grade/16809335d05c4b82b5e656de74875ea9)](https://www.codacy.com/app/marcomontalbano/jquery-jcreate)
 [![Build Status](https://travis-ci.org/marcomontalbano/jquery-jcreate.svg?branch=master)](https://travis-ci.org/marcomontalbano/jquery-jcreate)
@@ -13,8 +12,7 @@ Now you can do something cool when one or more elements are created and are avai
 See it in action with [CodePen].
 
 
-Install
--------
+## Install
 
 ### Yarn and npm
 
@@ -76,8 +74,7 @@ To include the latest releases and all upcoming features and patches, use this:
 <script src="https://cdn.jsdelivr.net/npm/jquery-jcreate@1/dist/jquery.jcreate.min.js"></script>
 ```
 
-How to use
-----------
+## How to use
 
 jCreate works with the [jQuery Event Delegation].
 
@@ -147,8 +144,7 @@ $( document ).on('create', 'div', function( event ) {
 Since I use the last version of `jasmine-jquery` library in order to test my own plugin, I cannot ensure that the plugin works with jQuery 1.7 and below, due to the fact that `jasmine-jquery` uses methods that were introduced in jQuery 1.8.
 
 
-The Module Pattern
-------------------
+## The Module Pattern
 
 > _Modules are an integral piece of any robust application's architecture and typically help in keeping the units of code for a project both cleanly separated and organized._
 >
@@ -204,8 +200,7 @@ helloWorldComponent.greeting('Marco'); //= Hello Marco!
 ```
 
 
-Development
------------
+## Development
 
 ### Install Grunt and Bower
 

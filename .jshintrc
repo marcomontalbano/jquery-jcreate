@@ -1,6 +1,5 @@
 {
     "esversion": 3,
-    "laxcomma": true, 
     "loopfunc": true,
 
     "-W032": true,

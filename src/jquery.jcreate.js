@@ -58,7 +58,7 @@
 
         for ( var data_key in data )
         {
-            if ( data.hasOwnProperty( data_key ) )
+            if ( Object.hasOwnProperty.call(data, data_key) )
             {
                 matches = data_key.match( regexp );
 

@@ -1,5 +1,5 @@
 /**
- * jquery.jcreate.js v1.2.7
+ * jquery.jcreate.js v1.2.8
  * Marco Montalbano © 2011-2020 - https://marcomontalbano.com
  * ----------------------------------------------------------
  */
@@ -23,7 +23,7 @@
             return data;
         }
         for (var data_key in data) {
-            if (data.hasOwnProperty(data_key)) {
+            if (Object.hasOwnProperty.call(data, data_key)) {
                 matches = data_key.match(regexp);
                 if (matches) {
                     _data[_utility.firstLetterToLowerCase(matches[1])] = data[data_key];
@@ -86,7 +86,7 @@
             }
         },
         utility: _utility,
-        version: "1.2.7"
+        version: "1.2.8"
     };
     $.fn.append = function() {
         return _domManip.apply(append.apply(this, arguments), arguments);
