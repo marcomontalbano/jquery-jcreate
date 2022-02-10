@@ -1,6 +1,5 @@
 # jCreate
 
-[![Codacy](https://api.codacy.com/project/badge/Grade/16809335d05c4b82b5e656de74875ea9)](https://www.codacy.com/app/marcomontalbano/jquery-jcreate)
 [![Build Status](https://travis-ci.org/marcomontalbano/jquery-jcreate.svg?branch=master)](https://travis-ci.org/marcomontalbano/jquery-jcreate)
 [![Coverage Status](https://coveralls.io/repos/github/marcomontalbano/jquery-jcreate/badge.svg?branch=master)](https://coveralls.io/github/marcomontalbano/jquery-jcreate?branch=master)
 [![Release Notes](https://img.shields.io/github/release/marcomontalbano/jquery-jcreate.svg)](https://github.com/marcomontalbano/jquery-jcreate/releases)
