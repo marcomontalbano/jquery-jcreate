@@ -28,7 +28,6 @@ describe('jQuery.event.special.create.utility', function()
     {
         // given
         Array.prototype.newCoolFunction  = function() {};
-        Object.prototype.newCoolFunction = function() {};
 
         // then
         expect(function() {

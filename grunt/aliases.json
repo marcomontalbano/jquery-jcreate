@@ -1,0 +1,17 @@
+{
+  "test": [
+    "jshint:source",
+    "jasmine"
+  ],
+  "smoke_test": [
+    "jshint:source",
+    "jasmine:jquery-1.8"
+  ],
+  "build": [
+    "test",
+    "uglify:beautify",
+    "uglify:minify",
+    "umd",
+    "string-replace:version"
+  ]
+}

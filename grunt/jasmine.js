@@ -15,17 +15,15 @@ module.exports = function (grunt, options) {
                 '<%= files.specs %>'
             ],
 
-            junit : {
-                // Path to output JUnit xml
-                path: 'output/testresults',
-            },
-
             // The auto-generated specfile that phantomjs will use to run your tests.
             // Automatically deleted upon normal runs. Use the :build flag to generate a SpecRunner manually e.g. grunt jasmine:myTask:build
             outfile : 'jasmine.html',
 
             // Prevents the auto-generated specfile used to run your tests from being automatically deleted.
             keepRunner : true,
+
+            // Launches puppeteer with --allow-file-access-from-files (Fix Issue https://github.com/gruntjs/grunt-contrib-jasmine/issues/298)
+            allowFileAccess: true,
 
             template: require('grunt-template-jasmine-istanbul'),
 
@@ -82,6 +80,8 @@ module.exports = function (grunt, options) {
                         // Third party libraries like jQuery & generally anything loaded before source, specs, and helpers.
                         vendor: [
                             _jquery_file,
+                            '.grunt/grunt-contrib-jasmine/boot0.js',
+                            '.grunt/grunt-contrib-jasmine/boot1.js',
                             'node_modules/jasmine-jquery/lib/jasmine-jquery.js',
                             'lib/jasmine-jquery-config.js',
                         ],
