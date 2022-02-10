@@ -2,7 +2,7 @@
   "name": "jquery-jcreate",
   "filename": "jquery.jcreate",
   "firstRelease": "2011-11-18",
-  "version": "1.2.8",
+  "version": "1.2.9",
   "description": "jCreate is a new special event for jQuery. Just use .on('create', ..); the callback will be triggered when elements are created on the page.",
   "main": "dist/jquery.jcreate.umd.js",
   "author": {
