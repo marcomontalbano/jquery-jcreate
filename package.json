@@ -5,6 +5,9 @@
   "version": "1.2.9",
   "description": "jCreate is a new special event for jQuery. Just use .on('create', ..); the callback will be triggered when elements are created on the page.",
   "main": "dist/jquery.jcreate.umd.js",
+  "files": [
+    "dist"
+  ],
   "author": {
     "name": "Marco Montalbano",
     "email": "me@marcomontalbano.com",
@@ -29,7 +32,8 @@
     "start": "serve",
     "test": "grunt test",
     "smoke": "grunt watch:smoke_test",
-    "build": "grunt build"
+    "build": "grunt build",
+    "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
     "jquery": ">=1.8"
