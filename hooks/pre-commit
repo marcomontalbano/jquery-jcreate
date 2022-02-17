@@ -9,11 +9,4 @@
 
 # build project
 npm run build
-
-# check if something has changed
-if [[ `git ls-files -mo --exclude-standard dist/` != '' ]]; then
-    echo "\n\033[0;36m""Adding compiled files to commit:""\033[0;0m"
-    git ls-files -mo --exclude-standard dist/
-    git add dist/
-    echo ""
-fi
+git add dist -f
