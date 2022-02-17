@@ -21,6 +21,8 @@
     "ignore": [
         "**/.*",
         "bower_components",
+        "cover.png",
+        "hooks",
         "docs",
         "grunt",
         "lib",
