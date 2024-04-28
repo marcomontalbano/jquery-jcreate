@@ -15,7 +15,7 @@ See it in action with [CodePen].
 
 ### Yarn and npm
 
-[![NPM](https://nodei.co/npm/jquery-jcreate.png)](https://nodei.co/npm/jquery-jcreate/)
+[![NPM](https://nodei.co/npm/jquery-jcreate.svg)](https://nodei.co/npm/jquery-jcreate/)
 
 You can install jCreate using [Yarn] or [npm]:
 
